@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>checktable-two</title>
+	<style>
+    *{
+    	padding: 0;
+    	margin: 0;
+    }
+    .main{
+    	position: relative;
+    }
+    .one{
+    	padding-top: 20px;
+    	padding-bottom: 5px;
+    	margin-left: 200px;
+    	display: flex;
+    	flex-direction:row;
+    }
+    .one label{
+    	font-size: 20px;
+    	font-family: '黑体';
+    	font-weight: bold;
+    	width: 100px;
+    	height: 40px;
+    	line-height: 40px;
+    	margin-right: 20px;
+    }
+    .one input{
+    	flex:1;
+    	border:1px solid gray;
+    	margin-right: 20px;
+    	font-size: 20px;
+    }
+    .two div:nth-of-type(2){
+    	margin-left: 322px;
+    	color: gray;
+    	display: none;
+
+    }
+    .sub{
+    	position: absolute;
+    	right: 40px;
+    	width: 100px;
+    	height: 40px;
+    	background-color: blue;
+    	color: #fff;
+    	font-size: 20px;
+    	margin-top: 10px;
+    	border: none;
+    	cursor: pointer;
+
+    }
+
+	</style>
+</head>
+<body>
+	<div class="main">
+	<form>
+	<div class="two">
+		<div class="one" id="item1">
+
+		    <label for="">名称</label>
+	<input type="text" class="txt" onfocus="inputfouse(this)" onblur="losefouse(this)" />
+			
+		</div>
+		<div class="ti-xing-1" >必填，长度为4到16个字符</div>
+	</div>
+	<div class="two">
+		<div class="one">
+		    <label for="">密码</label>
+	<input type="password" class="txt-1" onfocus="inputfouse(this)" onblur="losefouse(this)"/> 
+			
+		</div>
+		<div class="ti-xing-2"></div>
+	</div>
+	<div class="two">	
+		<div class="one">
+		    <label for="">密码确认</label>
+	<input type="password" class="txt-2" onfocus="inputfouse(this)" onblur="losefouse(this)"/>
+			
+		</div>
+		<div class="ti-xing-3">请再输入一遍您设定的密码</div>
+	</div>
+	<div class="two">
+		<div class="one">
+		    <label for="">邮箱</label>
+		<input type="text" class="txt-3" onfocus="inputfouse(this)" onblur="losefouse(this)"/>
+			
+		</div>
+		<div class="ti-xing-4">请输入您的邮箱</div>
+	</div>
+	<div class="two">
+		<div class="one">
+		    <label for="">手机</label>
+		<input type="text" class="txt-4" onfocus="inputfouse(this)" onblur="losefouse(this)"/>
+			
+		</div>
+		<div class="ti-xing-5">请输入您的手机号</div>
+	</div>
+	<div><input type="button" class="sub" value="提交" /></div>
+	</form>
+</div>
+	
+</body>
+</html>
+<script type='text/javascript'>	
+  var txt=document.getElementsByClassName('txt')[0];
+  var txt1=document.getElementsByClassName('txt-1')[0];
+  var txt2=document.getElementsByClassName('txt-2')[0];
+  var txt3=document.getElementsByClassName('txt-3')[0];
+  var txt4=document.getElementsByClassName('txt-4')[0];
+  //点击提交按钮
+	var submitBtn=document.getElementsByClassName("sub")[0];
+  var password='';
+ function inputfouse(wo){
+  
+ 	wo.parentNode.nextElementSibling.style.display='table';
+ 	
+ 	
+ }
+ function losefouse(wo){
+   var input=wo.value;
+   var divn=wo.parentNode.nextElementSibling;
+   var rel=0;
+   if (wo==txt) {
+      rel=checktxt(wo,input,divn);
+   }else if (wo==txt1) {
+      rel=checktxt1(wo,input,divn);
+   }else if (wo==txt2) {
+   	 rel=checktxt2(wo,input,divn);
+
+   }else if (wo==txt3) {
+   	 rel=checktxt3(wo,input,divn);
+
+   }else if (wo==txt4) {
+   	 rel=checktxt4(wo,input,divn);
+
+
+   }
+   return rel;
+
+ }
+ window.onload=function(){
+ 	//给所有的可输入的input设置焦点事件
+ 	submitBtn.onclick=subclick;
+ }
+
+function checktxt(wo,input,divn){
+    if (input.length!=0) {
+    	if (4<=getStrLen(input) && getStrLen(input)<=14) {
+    	divn.innerHTML='输入符合规则';
+    	divn.style.color='green';
+    	wo.style.borderColor='green';
+    	return 1;
+    }else{
+    		divn.innerHTML='必填，长度为4到16个字符';
+    	divn.style.color='red';
+    	wo.style.borderColor='red';
+    	return 0;
+    }
+   }else{
+   	divn.innerHTML='输入不能为空';
+    	divn.style.color='red';
+    	wo.style.borderColor='red';
+    	return 0;
+   }
+} 
+function checktxt1(wo,input,divn){
+	password=input;
+	return 1;
+
+}
+function checktxt2(wo,input,divn){
+	if (password==input) {
+		divn.innerHTML='密码输入一致';
+    	divn.style.color='green';
+    	wo.style.borderColor='green';
+    	return 1;
+	}else{
+		divn.innerHTML='密码输入不一致，请重新输入';
+    	divn.style.color='red';
+    	wo.style.borderColor='red';
+    	return 0;
+	}
+}
+function checktxt3(wo,input,divn){
+	var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/; 
+	console.log();
+	if (reg.test(input)) {
+		divn.innerHTML='邮箱格式正确';
+    	divn.style.color='green';
+    	wo.style.borderColor='green';
+    	return 1;
+	}else{
+		divn.innerHTML='您输入的不是邮箱';
+    	divn.style.color='red';
+    	wo.style.borderColor='red';
+    	return 0;
+
+	}
+
+}
+function checktxt4(wo,input,divn){
+
+	if (input.length!=0 && !(/^1[3|4|5|7|8][0-9]{9}$/.test(input))) {
+		divn.innerHTML='电话格式正确';
+    	divn.style.color='green';
+    	wo.style.borderColor='green';
+    	return 1;
+	}else{
+		divn.innerHTML='您输入的不是电话号码';
+    	divn.style.color='red';
+    	wo.style.borderColor='red';
+    	return 0;
+
+	}
+
+}
+
+function getStrLen (str){
+        var enLen = 0;
+        var zhLen = 0;
+        for (var i = 0; i < str.length; i++) {
+        	if (isASCII(str[i])){
+                enLen++;
+            }
+            else {
+                zhLen++;
+            }
+        };
+        return enLen + zhLen * 2;  
+}
+
+
+function isASCII (c) {
+        return c.codePointAt(0) <= 0xFF;
+}
+
+function subclick(){
+	var inputs=document.getElementsByTagName('input');
+	
+
+		for (var i = 0; i < inputs.length-1; i++) {
+				
+			  if (losefouse(inputs[i])) {
+			  	if (i==inputs.length-2) {
+			  		alert('输入完成');
+			  	};
+			  	continue;
+			  }else{
+			  	alert('输入有误');
+			  	inputs[i].parentNode.nextElementSibling.style.display='table';
+			  	break;
+			  	
+			  }
+		};
+}	
+
+</script>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>自定义右键菜单栏</title>
+<style>
+	.main{
+		width: 600px;
+		height: 600px;
+		background-color: green;
+
+	}
+	.menu{
+		width: 300px;
+		height: 300px;
+		background-color: skyblue;
+        
+         border: 1px solid yellow;
+         text-align: center;
+         position: relative;
+	}
+	.demo{
+		width: 200px;
+		height: 90px;
+		display: none;
+		text-align: left;
+		position: absolute;
+		background-color: write;
+
+				border: 1px solid yellow;
+				z-index: 200;
+      
+	/*	top: 50px;
+		left: 60px;
+*/
+	}
+	ul{
+	
+
+	}
+	
+    
+</style>
+</head>
+<body>
+
+	<div class="menu" id="menu">
+		this a fire staring in my heart
+		
+	</div>
+	<div class="demo" id="demo">
+		hahhahah
+	    </div>
+
+    
+</body>
+<script >
+  // var doc=document;
+ 	// var menu=doc.getElementById('menu');
+ 	// var demo=doc.getElementById('demo');
+ 	// var menuleft=menu.offsetLeft;
+ 	// var menutop=menu.offsetTop;
+
+
+ 	// menu.oncontextmenu=function(e){
+ 	// 	console.log('您点击了右键');
+     
+  //       var thisX=e.clientX;
+  //       var thisY=e.clientY;
+        
+  //         demo.style.display="block";
+          
+  //      demo.offsetLeft=thisY-menutop;
+  //      demo.style.left=thisX-menuleft;
+
+  //       console.log(demo.style.top,thisY-menutop);
+ 	// }
+ 	// menu.onclick=function(){
+ 	// 	demo.style.display='none';
+ 	// }
+
+
+
+// var
+//     cnt = document.getElementById('content'),
+//     menu = document.getElementById('menu');
+
+// cnt.oncontextmenu = function(e) {
+//     var
+//         width_x = window.innerWidth - e.clientX,
+//         height_y = window.innerHeight - e.clientY,
+//         px = 'px';
+
+//     e.preventDefault();
+
+//     menu.style.display = 'block';
+
+//     if (width_x < 150) {
+//         if (height_y < 50) {
+//             menu.style.right = width_x+px;
+//             menu.style.bottom = height_y+px;
+//         } else {
+//             menu.style.right = width_x+px;
+//             menu.style.bottom = height_y - 50+px;
+//         }
+//     } else if (height_y < 50) {
+//         menu.style.right = width_x - 150+px;
+//         menu.style.bottom = height_y+px;
+//     } else {
+//         menu.style.right = width_x - 150+px;
+//         menu.style.bottom = height_y - 50+px;
+//     }
+// }
+// cnt.onclick = function(e){
+//     menu.style.display = 'none'
+// }
+
+
+
+
+
+
+ var cnt = document.getElementById('menu');
+ var menu = document.getElementById('demo');
+
+cnt.oncontextmenu = function(e) {
+var x = e.clientX;
+        var y = e.clientY;
+        var winW = document.body.clientWidth || document.documentElement.clientWidth;
+        var winH = document.body.clientHeight || document.documentElement.clientHeight;
+        console.log(winW,winH);
+        e.defaultPrevented;
+        menu.style.display = 'block';
+        if (x > (winW - 200) && y > (winH - 90)) {
+            menu.style.left = (x-200) + 'px';
+            menu.style.top = (y-90) + 'px';
+        } else if (x > (winW - 200)) {
+            menu.style.left = (x-200) + 'px';
+            menu.style.top = y + 'px';
+        } else if (y > (winH - 90)) {
+            menu.style.left = x + 'px';
+            menu.style.top = (y-90) + 'px';
+        } else {
+            menu.style.left = x + 'px';
+            menu.style.top = y + 'px';
+        }
+
+
+}
+document.oncontextmenu = function (e) {
+          
+        return false;
+};
+menu.onclick = function (e) {
+        e.stopPropagation();
+};
+
+
+</script>
+</html>
+
+

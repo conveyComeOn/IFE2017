@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>IEF 2017-spring JavaScript Task 05</title>
+<style>
+	.box ul{
+display: flex;
+flex-direction:row;
+list-style: none;
+width: 100%;
+align-items:flex-end;
+	}
+	.box ul li{
+		margin-right: 10px;
+		flex:1;
+		
+		background-color: skyblue;
+		text-align: center;
+		
+		color: #fff;
+		font-size: 20px;
+		
+	}
+</style>
+</head>
+<body>
+<div class="main">
+	<div class="top" id="top">
+		<input type="number" class="input" id="input" max='100' min='10'>
+		<button id="left-in">左侧入</button>
+		<button id="right-in">右侧入</button>
+		<button id="left-out">左侧出</button>
+		<button id="right-out">右侧出</button>
+
+	</div>
+	<div class="box">
+		<ul class="ul" id="ul">
+			<li>30</li>
+			<li>50</li>
+			<li>100</li>
+			<li>60</li>
+			<li>80</li>
+			<li>20</li>
+		</ul>
+	</div>
+	<button id="btn">排序啊</button>
+</div>
+    <script type='text/JavaScript'>
+    var leftru=document.getElementById('left-in');
+    var rightout=document.getElementById('right-out');
+    var rightru=document.getElementById('right-in');
+    var leftout=document.getElementById('left-out');
+     var ul=document.getElementById('ul');
+     var lis=ul.getElementsByTagName('li');
+     var btn=document.getElementById('btn');
+
+        
+    function leftruclick(){
+
+    	if (lis.length==60) {
+    		alert('最多添加到60个袁术');
+    		return;
+    	};
+        var li =document.createElement('li');
+             var input=document.getElementById('input').value;
+             if (!input) return;
+             if(9<parseInt(input)<101){
+             	
+             		console.log(parseInt(input));
+             	     li.innerHTML=input;
+// insertBefore() 方法：可以在已有子节点前插入一个新的子节点。语法：insertChild(newchild,refchild)
+	var hei=parseInt(input);
+        
+          	li.style.height=hei+'px';
+    ul.insertBefore(li,ul.firstChild);
+             }else{
+             	
+             	alert('请输入10-100之间的数字');
+             	return;	
+             }
+
+
+    }
+    function rightruclick(){
+
+    	if (lis.length==60) {
+    		alert('最多添加到60个袁术');
+    		return;
+    	};
+            var li =document.createElement('li');
+             var input=document.getElementById('input').value;
+             if (!input) return;
+               if(9<parseInt(input)<101){
+             
+             	  li.innerHTML=input;
+     var hei=parseInt(input);
+     li.style.height=hei+'px';
+    ul.appendChild(li);
+
+             }else{
+             		alert('请输入10-100之间的数字');
+             	return;
+             	    
+   
+
+
+    }
+}
+    function leftoutclick(){
+    	
+    	
+    	if (lis.length<=0)  return;
+    
+        alert(lis[0].innerHTML);
+    	ul.removeChild(lis[0]);
+    	
+    }
+    function rightoutclick(){
+
+if (lis.length<=0)  return;
+    alert(lis[lis.length-1].innerHTML);
+    	ul.removeChild(lis[lis.length-1]);
+
+    }
+    function liclick(){
+    	alert(this.innerHTML);
+    	  	ul.removeChild(this);
+    }
+    function init(){
+         leftru.onclick=leftruclick;
+         rightru.onclick=rightruclick;
+         leftout.onclick=leftoutclick;
+          rightout.onclick=rightoutclick;
+          btn.onclick=paixu;
+          for (var i = 0; i < lis.length; i++) {
+          	lis[i].onclick=liclick;
+          	var hei=parseInt(lis[i].innerHTML);
+        
+          	lis[i].style.height=hei+'px';
+          };
+    }
+    function sortart(a,b){
+    	return a-b
+    }
+    function paixu(){
+    	var heightarray=[]
+    	for (var i = 0; i < lis.length; i++) {
+    		heightarray.push(parseInt(lis[i].style.height));
+
+    	};
+    	var heightarr=heightarray.sort(sortart);
+    	for (var i = 0; i < lis.length; i++) {
+    		lis[i].innerHTML=heightarr[i];
+    		lis[i].style.height=parseInt(heightarr[i])+'px';
+    	};
+
+    }
+    init();
+
+    </script>
+</body>
+</html>

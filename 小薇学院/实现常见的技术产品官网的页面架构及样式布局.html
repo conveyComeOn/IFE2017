@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>实现常见的技术产品官网的页面架构及样式布局</title>
+<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.clearfix{
+		zoom: 1;
+	}
+	.clearfix:before{
+		display:block;clear:both;content:"";visibility:hidden;height:0;
+
+	}
+	a{
+		text-decoration: none;
+		color: #787B83;
+		
+
+	}
+	a:hover{
+		color: #EA6F6E;
+	}
+	ul{
+		list-style: none;
+	}
+	.topnav{
+		background-color: rgb(255,255,255);
+		height: 60px;
+
+	}
+	.center{
+		width: 90%;
+		margin: 0 auto;
+		height: 60px;
+		display: flex;
+		flex-direction:row;
+	}
+	.new-world{
+		float: left;
+		margin:auto 0;
+	}
+	.right-nav{
+		float: right;
+	}
+	.flex1{
+		flex:1;
+	}
+	.ul li{
+		float: left;
+		margin-left: 10px;
+	    margin-right: 10px;
+	    line-height: 60px;
+	    color: #787B83;
+	    font-weight: bold;
+
+	}
+	.li:hover{
+		border-bottom:  2px solid #EA6F6E;
+	}
+	.right-img{
+		float: right;
+	}
+	.clearfix{
+		overflow: hidden;
+	}
+	.xingmu-img{
+		background: url(images/tuyi.jpg) no-repeat;
+		position: relative;
+	}
+	.black{
+		background-color: black;
+		width: 1280px;
+		height: 854px;
+	    opacity: 0.2;
+	    position: absolute;
+	    left: 0;
+	    top: 0;
+	}
+	.timeof{
+   position: absolute;
+   font-family: '微软雅黑';
+   color: #ffffff;
+   font-size: 60px;
+   left: 100px;
+   top: 240px;
+	}
+	.young{
+		position: absolute;
+		font-size: 21px;
+		font-family: '微软雅黑';
+		color: #fffdfd;
+		left: 100px;
+		top: 320px;
+
+
+	}
+	.person{
+       position: absolute;
+       font-family: '微软雅黑';
+       font-size: 21px;
+       color: #fffdfd;
+       left: 100px;
+       top: 350px;
+	}
+	.begin{
+		position: absolute;
+		background-color:#e74f4d;
+		width: 300px;
+        height: 50px;
+		font-size: 30px;
+		line-height: 50px;
+
+		color: #ffffff;
+		font-family: '微软雅黑';
+		left: 100px;
+		top: 450px;
+		text-align: center;
+	}
+	.four-img{
+		background-color: #ffffff;
+		width: 1280px;
+		height: 249px;
+		position: absolute;
+		left: 0;
+		bottom: -87px;
+
+	}
+	.fourtime li {
+            width: 25%;
+            height: 150px;
+            float: left;
+	}
+	.fourtime li img{
+		padding-left: 50%;
+		padding-top: 25%;
+		margin-top: -21px;
+		margin-left: -21px;
+
+
+	}
+	.fourtitle li{
+		     width: 25%;
+            height: 40px;
+            margin-left: -2px;
+            float: left;
+		text-align: center;
+		color: #767777;
+		font-family: '黑体';
+		font-size: 14px;
+		
+
+	}
+	 .yeah{
+border-right: 2px solid #aaaaaa;
+	}
+     .killdu{
+     	
+     	height: 360px;
+     	width: 1280px;
+     	position: relative;
+     	background-color: #ededec;
+     	margin-top: 80px;
+     	color: #c9c9c9;
+		font-family: '黑体';
+		font-size: 53.59px;
+		text-align: center;
+
+     }
+     .killdu p{
+     	padding-top: 220px;
+
+     }
+
+     .books{
+     	position: absolute;
+
+     	top: 40%;
+     	left: 50%;
+     	margin-left: -46px;
+     	margin-top: -46px;
+     	
+     }
+     .themap{
+     	width: 1280px;
+     	height: 342px;
+     	position: relative;
+     }
+     .zhezhao{
+     	width: 1280px;
+     	height: 342px;
+     	position: absolute;
+     	top: 0;
+     	left: 0;
+     	opacity: 0.2;
+     	background-color: #aa3433;
+     }
+     .thetitle{
+     	text-align: center;
+     	width: 1280px;
+
+     }
+     .checkworld{
+     	color: #fbfafa;
+		font-family: '微软雅黑';
+		font-size: 21px;
+		position: absolute;
+		top: 50px;
+         left: 43%;
+         margin-left: -14px;
+
+
+     }
+     .notsame{
+     	color: #f4eeec;
+		font-family: '微软雅黑';
+		font-size: 12px;
+		position: absolute;
+		top: 100px;
+         left: 39%;
+         margin-left: -14px;
+     }
+     .ganggang{
+     	color: #f4eeec;
+     	font-weight: 1000;
+		font-family: '微软雅黑';
+		font-size: 12px;
+		position: absolute;
+		top: 70px;
+         left: 50%;
+     }
+     #select{
+     	width: 235px;
+     	height: 30px;
+     }
+     .checkbox li{
+     	float: left;
+     	margin-left: 50px;
+     }
+
+.themap form{
+	padding-left: 10%;
+	
+	position: relative;
+	top: -150px;
+
+}
+
+.themap select{
+	color: #b5b7b7;
+	width: 234px;
+	height: 36px;
+	padding-left: 5px;
+	margin-left: 28px;
+}
+
+.themap select option{
+	height: 36px;;
+}
+.themap input{
+	width: 234px;
+	height: 36px;
+	margin-left: 28px;
+	padding-left: 20px;
+	background-color: #be4e48;
+	color: #FFFFFF;
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: 20px;
+	border: none;
+}
+
+.themap .submit{
+	cursor: pointer;
+	transition: all .2s ease-in;
+	-webkit-transition: all .2s ease-in;
+}
+
+.the .submit:hover{
+	background-color: #ef716b;
+}
+.goodpic{
+	width: 1280px;
+	height: 630px;
+	background-color: #f7f7f7;
+	
+}
+.goodli{
+	padding-left: 100px;
+}
+.goodpic li{
+    margin-left: 50px;
+     padding-top: 100px;
+
+    float: left;
+    text-align: center;
+
+} 
+.goodpic li div{
+	padding: 10px;
+	background-color: #ffffff;
+
+}
+.active{
+	padding-top: 15px;
+	padding-bottom: 10px;
+	color: #323233;
+	font-family: '微软雅黑';
+		font-size: 20px;
+
+}
+.ad{
+	color: #898989;
+	font-family: '微软雅黑';
+		font-size: 10px;
+}
+.shanghai{
+	padding-bottom: 5px;
+	letter-spacing: 15px;
+	color: #323233;
+	font-family: '微软雅黑';
+		font-size: 20px;
+}
+.shanghai1{
+	padding-bottom: 5px;
+}
+.somesg{
+	width: 1280px;
+	height: 566px;
+	position: relative;
+	
+}
+.leftpic{
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 566px;
+	width: 852px;
+
+}
+.somep{
+	position: absolute;
+	top: 100px;
+		width: 852px;
+
+
+}
+.somep p{
+	text-align: center;
+}
+.worldone{
+	color: #ffffff;
+	font-family: '微软雅黑';
+		font-size: 49.47px;
+}
+.worldtwo{
+		color: #ffffff;
+	font-family: '微软雅黑';
+		font-size: 157.79px;
+}
+.worldthree{
+		color: #ffffff;
+	font-family: '微软雅黑';
+		font-size: 21.91px;
+}
+.worldfour{
+		color: #ffffff;
+	font-family: '微软雅黑';
+		font-size: 21.91px;
+		margin-top: 10px;
+}
+.righttitle{
+	width: 428px;
+		height: 466px;
+		float: right;
+		text-align: center;
+		padding-top: 100px;
+		
+
+}
+.tighttop{
+color: #323333;
+	font-family: '宋体';
+		font-size: 49.47px;
+		margin-top: 10px;
+		font-weight: bold;
+		line-height: 30px;
+}
+.tighttop label{
+	color: #e74f4d;
+
+}
+.new-world1{
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-top: 30px;
+	color: #b0b0b0;
+	font-family: '宋体';
+		font-size: 24px;
+		
+		line-height: 30px;
+
+
+}
+.something{
+
+	color: #e25c60;
+	font-family: '宋体';
+		font-size: 24px;
+		
+		line-height: 40px;
+		border: 1px solid #e25c60;
+		width: 200px;
+		height: 40px;
+		
+		margin :40px auto;
+
+}
+.something:hover{
+	cursor: pointer;
+	background-color: #e25c60;
+	color: #ffffff;
+}
+.threeyuan{
+	padding-top: 20px;
+	margin :0 auto;
+		
+
+}
+.yuan{
+	width: 10px;
+	height: 10px;
+	border-color: #929293;
+	border-radius: 5px;
+	float: left;
+	margin-left: 10px;
+	
+border: 1px solid #929293;
+
+
+
+}
+.yuanone{
+		background-color: #929293;
+	margin-left: 200px;
+	border: 1px solid #929293;
+
+}
+.threebig{
+	width: 1280px;
+	height: 520px;
+	text-align: center;
+
+}
+.bigone{
+	width: 425px;
+	height: 520px;
+	background-color: #e7504d;
+	float: left;
+
+}
+.bigtwo{
+	width: 425px;
+	height: 520px;
+	background-color: #ffffff;
+	float: left;
+}
+.bogthree{
+	float: left;
+	width: 430px;
+	height: 519px;
+
+}
+.new-age{
+color: #fff;
+	font-family: '黑体';
+		font-size: 21px;
+		line-height: 31.36px;
+		margin-top: 200px;
+}
+.love{
+	color: #fff;
+	font-family: '黑体';
+		font-size: 21px;
+		line-height: 31.36px;
+		margin-top: 10px;
+}
+.new-age1{
+color: #323333;
+	font-family: '黑体';
+		font-size: 21px;
+		line-height: 31.36px;
+		margin-top: 200px;
+}
+.love1{
+	color: #323333;
+	font-family: '黑体';
+		font-size: 21px;
+		line-height: 31.36px;
+}
+.something1{
+
+	color: #ffffff;
+	font-family: '宋体';
+		font-size: 24px;
+		
+		line-height: 40px;
+		border: 1px solid #ffffff;
+		width: 200px;
+		height: 40px;
+		
+		margin :40px auto;
+
+}
+.something1:hover{
+	cursor: pointer;
+	background-color: #ffffff;
+	color: #e25c60;
+}
+.become{
+	text-align: center;
+	width: 1280px;
+	height: 650px;
+
+}
+.webe{
+	color: #323333;
+	margin-top: 120px;
+
+	font-family: '黑体';
+		font-size: 21px;
+
+}
+.baoluo{
+	margin-top: 20px;
+}
+.paul{
+	color: #aaaaaa;
+	line-height: 18px;
+
+/*	margin-top: 120px;*/
+
+	font-family: '微软雅黑';
+		font-size: 12px;
+}
+.red{
+	color: red;
+
+}
+.left-xieyi{
+	margin-top: 100px;
+	margin-left: 150px;
+	width: 300px;
+	text-align: left;
+	float: left;
+}
+.goodone{
+color: #231815;
+	
+/*	margin-top: 120px;*/
+
+	font-family: '黑体';
+		font-size: 14px;
+}
+.badone{
+	margin-top: 20px;
+	margin-bottom: 40px;
+
+color: rgb(157,155,154);
+	
+/*	margin-top: 120px;*/
+
+	font-family: '宋体';
+		font-size: 12px;
+		line-height: 30px;
+
+}
+
+
+
+
+.apply_form {
+	margin-top: 100px;
+    width: 641px;
+    height: 345px;
+    margin-right: 140px;
+}
+.apply_form .apply_form_c {
+    position: relative;
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    width: 310px;
+    height: 41px;
+    margin: 0 16px 15px 0;
+}
+.apply_form span {
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    width: 60px;
+    height: 41px;
+    background-color: #EDEDEF;
+    font: normal 12px "微软雅黑";
+    line-height: 41px;
+    color: #221814;
+    padding-left: 15px;
+    _width: 75px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.apply_form input {
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    width: 235px;
+    height: 41px;
+    outline: none;
+    padding: 0;
+    border: 0;
+    background-color: #EDEDEF;
+    line-height: 41px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.apply_form .apply_none {
+    margin: 0 0 15px 0;
+    float: right;
+}
+.apply_form textarea {
+    resize: none;
+    background-color: #EDEDEF;
+    height: 120px;
+    width: 601px;
+    border: 0;
+    outline: none;
+    font: normal 12px/20px "微软雅黑";
+    color: #221814;
+    padding: 10px 20px;
+    overflow: hidden;
+    _width: 641px;
+}
+.apply_form button {
+    font: normal 14px/41px "黑体";
+    color: #000;
+    width: 100%;
+    height: 41px;
+    background-color: #EDEDEF;
+    padding: 0;
+    margin: 10px 0 0;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+.right {
+    float: right;
+}
+.footer{
+  background-color: #32353e;
+  width: 1280px;
+  height: 360px;
+  text-align: center;
+     padding-top: 37px;
+
+}
+.footer .footer_top {
+    text-align: center;
+    color: #fff;
+    height: 281px;
+}
+.footer .footer_top h3 {
+    font: normal 21px "黑体";
+    margin-bottom: 30px;
+
+}
+.footer .footer_top p{
+    width: 472px;
+    font: normal 12px/1.5em "宋体";
+margin: 0 auto;
+}
+.footer .footer_top form {
+	margin-top: 30px;
+    height: 41px;
+}
+.footer .footer_top input,
+.footer .footer_top button {
+    display: inline-block;
+    width: 421px;
+    height: 41px;
+    *zoom: 1;
+    *display: inline;
+    border: 0;
+    padding: 0 0 0 10px;
+    margin: 0;
+    font: normal 14px/41px "微软雅黑";
+    outline: none;
+}
+.footer .footer_top button {
+    width: 81px;
+    height: 41px;
+    font-size: 15px;
+    line-height: 41px;
+    background-color: #6F7178;
+    color: #fff;
+    padding: 0;
+    cursor: pointer;
+}
+
+.footer .footer_top .footer_icon {
+    list-style: none;
+    margin: 0;
+    padding: 50px 0;
+}
+
+
+.footer .footer_top .footer_icon li {
+    display: inline-block;
+    *zoom: 1;
+    *display: inline;
+    width: 29px;
+    height: 25px;
+    margin-right: 20px;
+    cursor: pointer;
+    background: url("images/mission7_sprit.png") no-repeat -139px -97px;
+}
+.footer .footer_top .footer_icon .icon_2 {
+    background: url("images/mission7_sprit.png") no-repeat -135px -72px;
+}
+.footer .footer_top .footer_icon .icon_3 {
+    background: url("images/mission7_sprit.png") no-repeat -134px -47px;
+}
+.footer .footer_top .footer_icon .icon_4 {
+    background: url("images/mission7_sprit.png") no-repeat -139px -122px;
+}
+</style>
+</head>
+<body>
+
+
+ <div class="main">
+ 	<div class="topnav">
+ 		<div class="center">
+ 			<div class="new-world">
+ 				<img src="images/new-world.jpg" alt="">
+ 			</div>
+ 			<div class="flex1"></div>
+ 			<div class="right-nav">
+ 			    <div class="ul clearfix">
+ 			    	<ul class="clearfix">
+ 					<li class="li"><a href="">首页</a></li>
+ 					<li class="li"><a href="">最新活动</a></li>
+ 					<li class="li"><a href="">项目介绍</a></li>
+ 					<li class="li"><a href="">爱心社区</a></li>
+ 					<li class="li"><a href="">关于我们</a></li>
+ 					<li><a href="" style="color:#EA6F6E"><img src="images/person.jpg" alt="">登录	</a></li>
+ 				    </ul>
+ 			    </div>
+ 				
+ 			</div>
+ 		</div>
+ 	</div>
+ 	<div class="xingmu-img">
+ 		<img src="images/tuyi.jpg" alt="">
+ 		<div class="black"></div>
+ 		<div class="timeof">
+ 			Time of new life
+ 		</div>
+ 		<div class="young">
+ 			新时代，你就是一个新时代
+ 		</div>
+ 		<div class="person">
+ 			体验新生活，感受新生活
+ 		</div>
+ 		<div class="begin">
+ 			开始体验
+ 		</div>
+ 		<div class="four-img ">
+ 			<ul class="fourtime">
+ 				<li class="clearfix"><img src="images/yuanquan.png" alt=""></li>
+ 				<li><img src="images/qizhi.png" alt=""></li>
+ 				<li><img src="images/xiaohua.png" alt=""></li>
+ 				<li><img src="images/xiangqing.png" alt=""></li>
+ 			</ul>
+ 			<ul class="fourtitle">
+ 				<li class="yeah clearfix">
+ 					<p>打造全新的世界观，让你更</p>
+ 					<p>爱你的生活</p>
+ 				</li>
+ 				<li class="yeah">
+ 					<p>丰富多彩的公益活动，发</p>
+ 					<p>挥新世界的主人公意识</p>
+ 				</li>
+ 				<li class="yeah">
+ 					<p>时尚的新概念，超</p>
+ 					<p>前体验未知的生活</p>
+ 				</li>
+ 				<li>
+ 					<p>完善的培养机制，陪</p>
+ 					<p>养你全新的世界观</p>
+ 				</li>
+ 			</ul>
+ 		</div>
+ 		
+
+        </div>
+        <div class="killdu">
+ 			<div class="books">
+ 				<img src="images/books.png" alt="">
+ 			</div>
+ 			<p>
+ 				关于新世界你不知道的还有什么？
+ 			</p>
+ 			
+ 		</div>
+ 		<div class="bigmap">
+ 			<div class="themap">
+ 				<img src="images/themap.png" alt="">
+ 				<div class="zhezhao">
+ 				
+ 			</div>
+ 			<div class="thetitle">
+ 				<p class="checkworld">查找新世界城市活动信息</p>
+ 				<p class="ganggang">_______</p>
+ 				<p class="notsame">每个城市都有不同的活动信息，请自主查找您所需要了解的城市</p>
+ 			</div>
+ 			<form action="" method="post">
+						<label for="country"></label>
+						<select name="country" id="country" >
+							<option value="" disabled selected>中国</option>
+							<option value="china">中国</option>
+						</select>
+						
+						<label for="province"></label>
+						<select name="province" id="province">
+							<option value="" disabled selected>省份</option>
+							<option value="fj">福建省</option>
+							<option value="gd">广东省</option>
+							<option value="sh">上海省</option>
+						</select>
+						
+						<label for="city"></label>
+						<select name="city" id="city">
+							<option value="" disabled selected>城市</option>
+							<option value="">泉州市</option>
+							<option value="">广州市</option>
+							<option value="">东莞市</option>
+						</select>
+						<input class="submit" type="submit" value="搜索"/>
+					</form>
+ 			</div>
+ 			
+ 			
+ 		</div>
+ 		<div class="goodpic">
+ 			<ul>
+ 				<li class="goodli"><div><img src="images/picone.png" alt=""></div><p class="active">北京活动</p><p class="ad">解放大联盟</p></li>
+ 				<li><p class="shanghai">上海活动</p><p class="ad shanghai1">夜上海新景观探索</p><div><img src="images/pictwo.png" alt=""></div></li>
+ 				<li><div><img src="images/picthree.png" alt=""></div><p class="active">深圳活动</p><p class="ad">全新海岸线观点站</p></li>
+ 				<li><div><img src="images/picfour.png" alt=""></div><p class="active">香港活动</p><p class="ad">奢侈消费大派送</p></li>
+ 			</ul>
+
+ 		</div>
+ 		<div class="somesg">
+ 			<div class="leftpic">
+ 				<img src="images/somesg.png" alt="">
+ 			</div>
+ 			<div class="somep">
+ 				<p class="worldone">新世界</p>
+ 				<p class="worldtwo">TIME</p>
+ 				<p class="worldthree">@新世界-北京</p>
+ 				<p class="worldfour">2016.4.16</p>	
+ 			</div>
+ 			<div class="righttitle">
+ 				<div class="tighttop">新世界/<label>01</label></div>
+ 				<div class="new-world1">新世界!新世界!新世界!新世界!新世界!新世界!新世界!新世界!新世界!新世界!新世界!新世界!新世界!新世界!新世界!新世界!新世界!新世界!</div>
+ 				
+ 				<div class="something">更多详情</div>
+ 				<div class="threeyuan">
+ 					<div class="yuan yuanone"></div>
+ 					<div class="yuan yuantwo"></div>
+                    <div class="yuan yuanthree"></div> 
+ 				</div>
+ 			
+ 			</div>
+ 		</div>
+ 		<div class="threebig">
+ 			<div class="bigone">
+ 				<p class="new-age">新时代</p>
+ 				<p class="love">关于爱生活的我们</p>
+ 				<p>_____</p>
+ 				<div class="something1">查看更多</div>
+ 			</div>
+ 			<div class="bigtwo">
+ 				<p class="new-age1">新时代</p>
+ 				<p class="love1">关于爱生活的我们</p>
+ 				<p>_____</p>
+ 				<div class="something">查看更多</div>
+ 			</div>
+ 			<div class="bigthree">
+ 				<img src="images/notbeautiful.png" alt="">
+ 			</div>
+ 		</div>
+ 		<div class="become">	
+         <p class="webe">成为我们的志愿者</p>
+         <p class="red">_____</p>
+         <p class="paul baoluo">在这些比赛中克里斯-保罗缺席了其中的十三场。在剩余的这70场比赛中保罗带队打出了47胜23负的战绩</p>
+         <p class="paul">对比快船规划的赛季55胜的目标来说是个不错的结果。</p>
+         <div class="left-xieyi">
+         <div class="goodone">新世界志愿者协议</div>
+         <div class="badone">我永远只认为格里芬是为了让空间和机会给小乔丹。虽然小乔丹的强打能力实在是一般，但小乔丹永远离不开三秒区。</div>
+         <div class="goodone">新世界志愿者权利</div>
+         <div class="badone">第一现在的格里芬，几乎让出了大半部分的空间与机会给小乔丹。请不要怀疑格里芬的内线能力</div>
+         <div class="goodone">更多协议</div>
+         	
+         </div>
+          <div class="right apply_form">
+                    <form action="">
+                        <div class="apply_form_c">
+                            <span>姓名：</span><input type="text">
+                        </div>
+                        <div class="apply_form_c apply_none">
+                            <span>年龄：</span><input type="text">
+                        </div>
+                        <div class="apply_form_c">
+                            <span>联系方式：</span><input type="text">
+                        </div>
+                        <div class="apply_form_c apply_none">
+                            <span>联系地址：</span><input type="text">
+                        </div>
+                        <textarea name="" id="" cols="30" rows="10">请简单描述您梦想的生活：</textarea>
+                        <button type="submit">提交申请</button>
+                    </form>
+                </div>
+ 		</div>
+ 		<div class="footer">
+ 		<div class="footer_top">
+ 				<h3>联系我们</h3>
+ 			<p>为了留下更多的产品资讯，您可以留下电子邮箱订阅我们公司的产品资讯</p>
+ 			<p>也可以通过以下任何方式关注我们的动态</p>
+ 			<form action="">
+                <input type="text" placeholder="jack7770126@126.com"><button>提&nbsp;&nbsp;交</button>
+            </form>
+            <ul class="footer_icon">
+                <li></li>
+                <li class="icon_2"></li>
+                <li class="icon_3"></li>
+                <li class="icon_4"></li>
+            </ul>
+ 		</div> 
+ 		
+ 		</div>
+
+ 	
+ </div>
+    
+</body>
+</html>

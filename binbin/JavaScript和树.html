@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Javascript和二叉树</title>
+	<style>
+    *{
+    	padding: 0;
+    	margin: 0;
+    } 
+    div{
+    	padding: 10px;
+
+    }
+    .main{
+    	margin: 0 auto;
+    	
+    	width: 800px;
+    }
+    .btn-three{
+    	height: 40px;
+    	width: 400px;
+    	margin:0 auto;
+    	display: flex;
+    	flex-direction:row;
+    }
+    .btn-three input{
+      width: 100px;
+      height: 30px;
+      color: #fff;
+      background-color:skyblue;
+      margin: 20px;
+      border: none;
+      cursor: pointer;
+
+    }
+
+    .main div{
+    	border: 1px solid gray;
+    	display: flex;
+    	flex-direction:row;
+    	flex:1;
+    	margin-right: 10px;
+
+    }
+    .root-3{
+    	height: 40px;
+
+    }
+	</style>
+</head>
+<body>
+  <div class="main">
+  	<div class="root">1
+  	   <div class="root-2">2
+           <div class="root-3">3
+              <div class="root-4">4</div>
+              <div class="root-4">4</div>
+           </div>
+           <div class="root-3">3
+              <div class="root-4">4</div>
+              <div class="root-4">4</div>
+           </div>
+  	   </div>
+  	   <div class="root-2">2
+           <div class="root-3">3
+              <div class="root-4">4</div>
+              <div class="root-4">4</div>
+           </div>
+           <div class="root-3">3
+              <div class="root-4">4</div>
+              <div class="root-4">4</div>
+           </div>
+  	   </div>
+  	</div>
+
+  </div>
+	<div class="btn-three">
+		<input type="button" value="前序:小葱" class="fir" />
+		<input type="button" value="中序:铁玲" class="mid" />
+		<input type="button" value="后序:三三" class="bac" />
+	</div>
+</body>
+</html>
+<script type='text/javascript'>
+var btn=document.getElementsByTagName("input"),
+        preBtn=btn[0],
+        inBtn=btn[1],
+        lastBtn=btn[2];
+	var allarray=[];
+	var timer=null;
+	var treeRoot=document.getElementsByClassName('root')[0];
+	window.onload=function(){
+		preBtn.onclick=btnHandle;
+		inBtn.onclick=inHandle;	
+		lastBtn.onclick=lastHandle;
+	}
+	function btnHandle(){
+		reSet();
+		preOrder(treeRoot);
+		changcolor();
+		
+
+	}
+		function inHandle(){
+		reSet();
+		inOrder(treeRoot);
+    changcolor();
+
+	}
+		function lastHandle(){
+		reSet();
+		lastOrder(treeRoot);
+    changcolor();
+
+
+	}
+	// 前序法，顺序是根-左-右
+	function preOrder(node){
+		// if(!(node==null)){
+		// 	allarray.push(node);
+	
+		// 	preOrder(node.firstElementChild);
+		// 	preOrder(node.lastElementChild);
+		// }
+
+    allarray.push(node);
+  for (var i = 0; i < node.childElementCount; i++)
+  {
+    if (node.children[i] != null)
+      preOrder(node.children[i]);
+  }
+ 
+
+		
+	}
+  // 中序法，顺序是左-根-右
+  function inOrder(node){
+    if(!(node==null)){
+      inOrder(node.firstElementChild);
+      allarray.push(node);
+      inOrder(node.lastElementChild);
+  
+     
+    }
+  }
+  // 后序法，顺序是左-右-根
+  function lastOrder(node){
+      if(!(node==null)){
+     
+  
+      preOrder(node.firstElementChild);
+      preOrder(node.lastElementChild);
+       allarray.push(node);
+    }
+  }
+	function changcolor(){
+      
+
+        var i=0;
+        allarray[i].style.backgroundColor='skyblue';
+        allarray[i].style.padding=20+'px';
+       
+        timer=setInterval(function(){
+          i++;
+          if (i<allarray.length) {
+                  allarray[i-1].style.backgroundColor='white';
+                  allarray[i-1].style.padding=10+'px';
+          allarray[i].style.backgroundColor='skyblue';
+          allarray[i].style.padding=20+'px';
+        }else{
+           clearInterval(timer);
+          
+          allarray[i-1].style.backgroundColor='white';
+          allarray[i-1].style.padding=10+'px';
+         
+          
+        }
+    
+
+        },700);
+
+	}
+	
+    function reSet(){
+    	allarray=[];
+    	clearInterval(timer);
+    	 var divs= document.getElementsByTagName("div");
+        for(var i=0;i<divs.length;i++){
+            divs[i].style.backgroundColor="white";
+        }
+
+    }
+</script>

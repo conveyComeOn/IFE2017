@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>flexbox布局</title>
+<style>
+*{
+	padding: 0;
+	margin: 0;
+}
+ 
+
+	.content{
+  border: 1px solid #eeeeed;
+  padding: 20px;
+  align-items:center;
+  display: flex;
+   justify-content:space-between;
+   flex:0;
+   margin:20px;
+
+	}
+	.content > div{
+		width: 150px;
+		margin-bottom: 10px;
+
+
+
+
+	}
+	.red{
+		border: 1px solid #f00;
+	}
+	.blue{
+		border: 1px solid #0f0;
+	}
+	.one{
+       height: 120px;
+	}
+	.two{
+         height: 100px;
+	}
+	.three{
+		height: 40px;
+
+	}
+	.four{
+		height: 200px;
+
+	}
+
+  @media all  and (max-width: 640px){
+     .content{
+     	flex-wrap:wrap;
+     	align-items:flex-start;
+     	
+     }
+     .four{
+ /*    	//order定义排列的顺序。数值越小顺序越前，默认值为宜，也就是说，默认排列为首位的盒子order为一*/
+     	order:-1;
+     }
+     
+  }
+
+
+</style>
+</head>
+<body>
+
+	<div class="content">
+		<div class="one red">1</div>
+		<div class="two red">2</div>
+		<div class="three red">3</div>
+		<div class="four blue">4</div>
+		
+	</div>
+    
+</body>
+</html>

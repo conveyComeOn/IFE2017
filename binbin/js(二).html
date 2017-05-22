@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+  </head>
+<body>
+
+  <h3>污染城市列表</h3>
+  <ul id="aqi-list">
+  
+    <li>第一名：福州（样例），10</li>
+      <li>第二名：福州（样例），10</li>
+  </ul>
+
+<script type="text/javascript">
+
+var aqiData = [
+  ["北京", 90],
+  ["上海", 50],
+  ["福州", 10],
+  ["广州", 50],
+  ["成都", 90],
+  ["西安", 100]
+];
+var allarray=[];
+var numarray=[];
+var copyarray=[];
+
+function sortNumber(a, b)
+{
+return b-a;
+}
+
+
+(function () {
+
+  /*
+  在注释下方编写代码
+  遍历读取aqiData中各个城市的数据
+  将空气质量指数大于60的城市显示到aqi-list的列表中
+  */
+
+
+  for (var i = 0; i < aqiData.length; i++) {
+
+  	if (aqiData[i][1]>60) {
+
+  		allarray.push(aqiData[i]);
+  		numarray.push(aqiData[i][1]);
+  		copyarray.push(aqiData[i][1]);
+
+
+  		
+  	};
+  
+  };
+
+})();
+//用这种方法来倒序拍数字数组
+
+
+var paied=numarray.sort(sortNumber);
+
+
+var yi=['一','二','三'];
+var ul=document.getElementById('aqi-list');
+for (var i = 0; i < numarray.length; i++) {
+	var li=document.createElement('li');
+		
+	// console.log(numarray.indexOf(paied[i]),paied[i]);
+	var hehe=allarray[copyarray.indexOf(paied[i])][0];
+	if (1<=i<=2) {
+		if (numarray.indexOf(paied[i])==numarray.indexOf(paied[i-1])){
+			hehe=allarray[copyarray.lastIndexOf(paied[i])][0];
+		};
+	
+
+	};
+	li.innerHTML='第'+yi[i]+'名：'+hehe+','+numarray[i];
+	
+	ul.appendChild(li);
+};
+
+
+
+</script>
+</body>
+</html>

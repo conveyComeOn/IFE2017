@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>使用HTML/CSS实现一个复杂页面</title>
+<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.clearfix{
+		zoom: 1;
+	}
+/*	.clearfix:before{
+		display:block;clear:both;content:"";visibility:hidden;height:0;
+
+	}*/
+	.clearfix:after{
+		clear: both;
+		display: table;
+		z-index: 1;
+		content: '';
+		visibility: hidden;
+		height: 0;
+	}
+	ul{
+		list-style: none;
+	}
+	.main{
+		width: 100%;
+
+	}
+	.top{
+		background-color: rgb(33,137,192);
+		width: 100%;
+		height: 45px;
+		display: flex;
+		padding-top: 5px;
+		padding-bottom: 5px;
+
+
+
+	}
+	.float-left{
+		float: left;
+	}
+	.float-right{
+		float: right;
+	}
+	.left-logo{
+		margin-left: 50px;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		width: 36px;
+		height: 36px;
+		background: url(images/left-logo.png) 0 0 no-repeat;
+		cursor: pointer;
+
+	}
+    .top-center{
+    	flex:1;
+    }
+	.serach{
+		width: 300px;
+		border: 1px solid #fff;
+		border-radius: 10px;
+		margin-right: 20px;
+		margin-top:10px;
+		background-color: #fff;
+		padding-left: 10px;
+		padding-top: 2px;
+		padding-bottom: 2px;
+	}
+	.search-img{
+		width: 17px;
+		height: 16px;
+		margin-top: 2px;
+		background: url(images/search-img.png) 0 0 no-repeat;
+	}
+	.xiaocong{
+		padding-left: 4px;
+		border: 0;
+		height: 16px;
+		margin-bottom: 2px;
+		margin-top: 2px;
+		outline: none;
+		width: 270px;
+
+	}
+	.denglu{
+		background: url(images/rea-person.png) 0 0 no-repeat;
+		width: 100px;
+		height: 20px;
+		padding-top: 2px;
+		padding-bottom: 2px;
+		padding-left: 18px;
+		margin-top: 16px;
+		font-family: '黑体';
+
+		font-size: 12.28px;
+		color: #fff;
+       cursor: pointer;
+
+	}
+    .content{
+    	width: 100%;
+    	
+    	height: 1280px;
+    }
+	.left-content{
+		width: 260px;
+		height: 1280px;
+		background-color: #2a2e3d;
+
+	}
+	.right-content{
+		width:calc(100% - 260px);
+		height: 100%;
+		background-color: #eeeeed;
+	}
+	
+	.left-content-img{
+			width: 60px;
+		height:60px;
+		border-radius: 60px;
+
+		border: 1px solid #bababe;
+		margin-left: 20%;
+		margin-top: 30px;
+		position: relative;
+
+	}
+	.two-roul{
+		width: 50px;
+		height: 50px;
+		border-radius: 50px;
+		background-color: #bababe;
+	
+		margin-top: 5px;
+		margin-left: 5px;
+	}
+	.name{
+		position: absolute;
+		top: 25px;
+		left: 80px;
+		font-family: '黑体';
+		font-size: 16px;
+		
+		color: #6e8095;
+
+	}
+	.name:hover{
+		color: #f6f5f5;
+		font-weight: bold;
+	}
+	.left-content-star{
+		width: 100%;
+
+	}
+	.li-ul{
+		width: 100%;
+		height: 30px;
+	}
+	.li-3{
+      width: 1px;
+      height: 40px;
+      background-color: #6e8095;
+      margin-top: 30px;
+	}
+	.li-1{
+		width: 50%;
+	}
+	.li-2{
+		width: calc(50% - 1px);
+		/*width: 48%;*/
+	}
+	.li-1,.li-2{
+		margin-top: 30px;
+
+   font-family: '黑体';
+		font-size: 16px;
+		line-height: 18px;
+		color: #6e8095;
+		text-align: center;
+	}
+	.left-content-lis{
+		margin-top: 60px;
+
+	}
+	.left-content-lis .li-md-1,.li-md-2,.li-md-3,.li-md-4,.li-md-5,.li-md-6 {
+		width: 100%;
+		color: #6e8095;
+		 font-family: '黑体';
+		font-size: 12px;
+		line-height: 28px;
+
+	}
+	.left-content-lis .li-md-2,.li-md-3,.li-md-4,.li-md-5,.li-md-6{
+		line-height: 48px;
+	}
+	.left-content-lis li .li-div-1,.li-div-2,.li-div-3,.li-div-4,.li-div-5,.li-div-6{
+		 display: inline-block;
+		
+    *zoom: 1;
+    *display: inline;
+   
+    margin-left: 50px;
+    padding-left: 10px;
+    cursor: pointer;
+		height: 13px;
+		width: 13px;
+	
+
+	
+
+	}
+
+	.li-div-1{
+		background: url('images/ddd.png') no-repeat 0 0;
+		overflow: hidden;
+	}
+	.li-div-2{
+		background: url('images/ddd.png') no-repeat 0 -23px;
+	}
+	.li-div-3{
+		background: url('images/ddd.png') no-repeat 0 -13px;
+	}
+	.li-div-4{
+		background: url('images/ddd.png') no-repeat 0 -23px;
+	}
+	.li-div-5{
+		background: url('images/ddd.png') no-repeat 0 -23px;
+	}
+	.li-div-6{
+		background: url('images/ddd.png') no-repeat 0 -45px;
+	}
+	.left-content-lis  .li-md-1{
+		color: #f6f5f5;
+		
+
+	}
+	.first-xiangqing{
+	
+
+		width: 70%;
+		margin-left: 30%;
+		margin-top: 10px;
+
+		
+
+	}
+	.first-xiangqing .baigong-1{
+		color: #6e8095;
+	}
+	.right-jiantou{	
+	color: #6e8095;
+	font-weight: bold;
+		height: 13px;
+		width: 13px;
+	}
+	.right-wenjian{
+			 display: inline-block;
+    *zoom: 1;
+    *display: inline;
+		height: 12px;
+		width: 13px;
+		background: url('images/ddd.png') no-repeat 0 -58px;
+	
+
+	}
+	.right-wenjian-1{
+		 display: inline-block;
+		height: 12px;
+		width: 13px;
+		background: url('images/ddd.png') no-repeat 0 -71px;
+
+	}
+	.wendang-1{
+		 display: inline-block;
+       height: 13px;
+		width: 13px;
+		background: url('images/ggg.png') no-repeat 0 -13px;
+		margin-left: 26px;
+	}
+	.wendang-2{
+		margin-left: 26px;
+		 display: inline-block;
+  height: 13px;
+		width: 13px;
+		background: url('images/ggg.png') no-repeat 0 0;
+	}
+	.czhan{
+		width: 80px;
+		height: 100%;
+		margin-right: 20px;
+	}
+	.right-content-top{
+		width: 100%;
+
+		height: 30px;
+		font-size: 12.28px;
+		line-height: 30px;
+		background-color: #fff;
+		color: #aaaaaa;
+	}
+	.threpeplo{
+		color: #6898c2;
+	}
+	.right-top-2{
+		box-shadow: -1px -1px -1px #888888;
+		height: 65px;
+		margin-top: 30px;
+		border: 1px solid #dddee0;
+		padding-top: 20px;
+		position: relative;
+      
+       color: #b5b7b7;
+       font-size: 12px;
+
+	}
+	.right-center{
+		background-color: #fff;
+		margin-left: 80px;
+		width: 890px;
+		
+
+
+	}
+
+
+
+
+/*.themap form{
+	padding-left: 10%;
+	
+	position: relative;
+	top: -150px;
+
+}*/
+.country{
+	margin-left: 28px;
+	padding-top: 20px;
+}
+.country select{
+	
+	width: 100px;
+	height: 28px;
+	padding-left: 5px;
+	
+}
+
+.country  option{
+	height: 28px;
+}
+.buy-ren,.sale-ren{
+	width: 200px;
+	position: absolute;
+	left: 200px;
+	
+
+}
+.buy-ren{
+	top: 20px;
+}
+.sale-ren{
+	top: 50px;
+}
+.buy-ren-1,.sale-ren-1{
+		position: absolute;
+	left: 420px;
+	
+}
+.buy-ren-2,.sale-ren-2{
+		position: absolute;
+	left: 620px;
+	
+}
+.buy-ren-2{
+		top: 20px;
+	
+	
+}
+.sale-ren-2{
+	top: 50px;
+	width: 250px;
+	left: 550px;
+}
+.buy-ren-1{
+	width: 200px;
+	top: 20px;
+}
+.sale-ren-1{
+	top: 50px;
+	width: 150px;
+}
+
+
+.buy{
+	
+	width: 150px;
+	height: 28px;
+	padding-left: 5px;
+}
+.country  option{
+	height: 28px;
+}
+.country label,.buy-ren label,.sale-ren label{
+	margin-right: 5px;
+
+}
+.chang{
+	width: 28px;
+	height: 40px;
+	background:url(images/change.png) 0 0 no-repeat;
+	position: absolute;
+	left: 390px;
+	top: 30px;
+
+}
+.sale-ren-1 .duan,.buy-ren-2 .duan{
+	width: 80px;
+}
+.submit{
+	cursor: pointer;
+	background-color:#388ac1;
+	color: #ebf2f7;
+	width: 60px;
+	height: 28px;
+	line-height: 28px;
+	position: absolute;
+	left: 770px;
+	top: 30px;
+	font-size: 12px;
+	border: none;
+	outline: none;
+
+}
+.right-top-3{
+	height: 64px;
+	margin-top: 10px;
+	background-color: #eeeeed;
+	display: flex;
+
+}
+.left-arrow,.right-arrow{
+	height: 64px;
+	width:30px;
+	background-color: #fff;
+	text-align: center;
+	float: left;
+	color: #bcbcbc;
+	line-height: 64px;
+	font-size: 24px;
+	font-family: bolder;
+	cursor: pointer;
+	box-shadow: -1px -1px -1px #888888;
+
+}
+.left-arrow{
+	margin-right: 5px;
+
+}
+.right-arrow{
+	margin-left: 5px;
+}
+.arrow-center li{
+	text-align: center;
+	width: 110px;
+	height: 64px;
+	float: left;
+	background-color: #fff;
+	margin-left: 5px;
+	margin-right: 5px;
+	cursor: pointer;
+	box-shadow: -1px -1px -1px #888888;
+}
+.arrow-center li:hover{
+	border-top: 2px solid blue;
+	margin-top: -2px;
+}
+.arrow-center li .time{
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+}
+.arrow-center li .money{
+	color: #bcbcbc;
+	font-size: 18px;
+
+}
+.arrow-center li  span{
+	color: #ec6500;
+	font-size: 25px;
+	font-weight: bold;
+
+
+}
+.history-check{
+	flex: 1;
+	margin-left: 5px;
+	background-color: #fff;
+	height: 64px;
+	line-height: 64px;
+	text-align: center;
+	font-size: 12px;
+	font-family: '微软雅黑';
+
+
+}
+.history-check-img{
+    background:url(images/history-img.png) no-repeat 0 0;
+    height: 32px;
+    width: 32px;
+    display: inline-block;
+    margin-right: 2px;
+    margin-bottom: -10px;
+}
+.right-top-4{
+	font-size: 12px;
+	font-family: '微软雅黑';
+	line-height: 31.44px;
+	background-color: #eeeeed;
+	margin-top: 10px;
+}
+.right-top-5{
+	display: flex;
+		background-color: #eeeeed;
+		
+
+}
+.right-top-5 ul{
+	display: flex;
+	width: 100%;
+	height: 100%;
+
+}
+.right-top-5 li{
+	flex:1;
+	float: left;
+	height: 70px;
+	background-color: #fff;
+	box-shadow: -1px -1px -1px #888888;
+	position: relative;
+
+}
+.heng-col-1{
+	margin-right: 10px;
+	border-left: 2px solid #43b29e;
+}
+.heng-col-4{
+	margin-left: 10px;
+	border-left: 2px solid #e2cd46;
+}
+.heng-col-2{
+	border-left: 2px solid #388ac1;
+}
+.heng-col-3{
+	border-left: 2px solid #d04b36;
+}
+.heng-col-2,.heng-col-3{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.box-p{
+		font-size: 12px;
+	font-family: '黑体';
+	line-height: 24.61px;
+	margin-top: 15px;
+	margin-left: 5px;
+}
+.box-p-1{
+	font-size: 10px;
+	font-family: '黑体';
+	line-height: 20.05px;
+	margin-left: 5px;
+	color: #b6b6b6;
+}
+.box-col-1,.box-col-2,.box-col-3,.box-col-4{
+	width: 60px;
+	height: 45px;
+	position: absolute;
+	right: 13px;
+	top: 13px;
+}
+.box-col-1{
+	background-color: #43b29e;
+}
+.box-col-2{
+	background-color: #388ac1;
+}
+.box-col-3{
+	background-color:#d04b36;
+}
+.box-col-4{
+	background-color:#e2cd46;
+}
+.right-top-6{
+	background-color: #eeeeed;
+	padding-top: 15px;
+	padding-bottom: 15px;
+
+}
+.top-6-left{
+	width: 530px;
+	height: 360px;	
+	background-color: #fff;
+	border-radius: 10px;
+	margin-right: 30px;
+
+}
+.top-6-right{
+	width: 330px;
+	height: 360px;	
+	background-color: #fff;
+	border-radius: 10px;
+
+
+}
+.top-6-left-first{
+	background-color: rgb(244,245,247);
+	height: 40px;
+	line-height: 40px;
+	width: 530px;
+
+ 	font-size: 12px;
+	font-family: '黑体';
+	padding-left: 20px;
+	box-sizing:border-box;
+	border-radius: 10px 10px;
+	margin-bottom: 20px;
+	
+}
+.top-6-left-two{
+
+	background-color: rgb(244,245,247);
+	height: 40px;
+	line-height: 40px;
+	width: 330px;
+
+ 	font-size: 12px;
+	font-family: '黑体';
+	padding-left: 20px;
+	box-sizing:border-box;
+	border-radius: 10px 10px;
+	margin-bottom: 20px;
+}
+
+.top-6-left span{
+		display: block;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-color: #ededf0;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	z-index: 1;
+	margin-left: 19px;
+	border:1px solid #aaaaaa;
+	border-bottom: none;
+/*   background-color: #fff;*/
+}
+
+.project-item {
+	position: relative;
+}
+.project-item ul li {
+	display: inline-block;
+	position: relative;
+	width: 70px;
+	line-height: 30px;
+	text-align: center;
+
+	
+}
+.project-item ul li input{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	z-index: 99;
+	cursor: pointer;
+	left: 0;
+
+}
+
+.project-item tr,td{
+	width: 100px;
+/*	height: 30px;*/
+	text-align: center;
+	font-size: 12px;
+	border: 1px solid #aaaaaa;
+}
+.table-one{
+	margin-top: 20px;
+
+}
+
+.table-one .one,.table-one .three{
+width: 100px;
+	height: 30px;
+	text-align: center;
+	font-size: 14px;
+	border: 1px solid #aaaaaa;
+	border-left: none;
+}
+.table-one .one,.table-one .two{
+	border-bottom: none;
+	font-size: 10px;
+	font-family: '黑体';
+	
+
+	color: #b6b6b6;
+}
+.the-title{
+		border-bottom: none;
+	font-size: 14px;
+	font-family: '黑体';
+	padding-left: 10px;
+
+	color: #b6b6b6;
+}
+.the-baobiao{
+	border-bottom: none;
+	font-size: 18px;
+	font-family: '黑体';
+	padding-left: 10px;
+
+}
+.table-one .three,.table-one .four{
+	border-top: none;
+}
+.table-one .two,.table-one .four{
+	width: 180px;
+	height: 30px;
+	text-align: center;
+	font-size: 14px;
+	/*border: 1px solid #aaaaaa;*/
+	border-right: none;
+}
+.project-item .tab{
+width: 409px;
+position: absolute;
+
+top: 31px;
+padding:40px;
+border: 1px solid #aaaaaa;
+margin-left: 19px;
+border-radius: 0 5px 5px 5px;
+display: none;
+z-index: 0;
+}
+.project-item textarea{
+	border: none;
+	border-bottom: 1px solid #eeeeed;
+	outline: none;
+}
+.project-item ul li input:checked + span {
+	background-color: #ffffff;
+	border: 1px solid #aaaaaa;
+	border-bottom: 1px solid #ffffff;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.project-item ul li input:checked + span + .tab {
+	display: block;
+}
+
+
+
+.project-item ul li .tab.item-2 {
+    margin-left: -59px;
+    border-radius: 5px;
+}
+.project-item ul li .tab.item-4 {
+    margin-left: -215px;
+    border-radius: 5px;
+}
+.project-item ul li .tab.item-5 {
+    margin-left: -293px;
+    border-radius: 5px;
+}
+.project-item ul li .tab.item-3 {
+	margin-left: -137px;
+	border-radius: 5px;
+}
+.project-item-1{
+	padding-left: 30px;
+
+}
+.submit-1{
+	cursor: pointer;
+	background-color:#388ac1;
+	color: #ebf2f7;
+	width: 60px;
+	height: 28px;
+	line-height: 28px;
+
+	font-size: 12px;
+	border: none;
+	outline: none;
+margin-left: 119px;
+
+}
+.right-top-7 {
+	margin-top: 10px;
+	background-color: #eeeeed;
+   display: flex;
+
+}
+.top-7-left{
+	margin-right: 10px;
+	
+}
+.top-7-left-first{
+	background-color: rgb(244,245,247);
+	height: 40px;
+	line-height: 40px;
+	width: 376px;
+
+ 	font-size: 12px;
+	font-family: '黑体';
+	padding-left: 20px;
+	box-sizing:border-box;
+	border-radius: 10px 10px 0 0;
+	border:1px solid #ebf2f7;
+	
+	
+}
+.header{
+		background-color: rgb(244,245,247);
+	height: 40px;
+	line-height: 40px;
+	width: 100%;
+
+ 	font-size: 12px;
+	font-family: '黑体';
+	padding-left: 20px;
+	box-sizing:border-box;
+	border-radius: 10px 10px 0 0;
+	border:1px solid #ebf2f7;
+}
+.top-7-left-content{
+
+	height: 260px;
+
+	padding-top: 10px;
+	padding-bottom: 20px;
+	background-color: #fff;
+
+}
+.buy-1{
+	
+	width: 75px;
+	height: 28px;
+	padding-left: 5px;
+}
+
+.four-input li{
+	float: left;
+	margin-left: 10px;
+}
+.sunday{
+box-sizing:border-box;
+	margin-left: 10px;
+	margin-right: 10px;
+	height: 40px;
+   text-align: center;
+   line-height: 40px;
+   margin-top: 10px;
+   border-top: 1px solid #388ac1;;
+   border-bottom:  1px solid #eeeeed;
+}
+.sunday ul{
+	display: flex;
+ flex-direction: row;
+	width: 100%;
+	height: 100%;
+}
+.sunday li{
+	flex:1;
+	
+}
+.thisday{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.thisday tr,.thisday td{
+border:none;
+}
+.thisday td{
+	width: calc(330px/7);
+}
+.thisday .jieri{
+color: red;
+
+}
+.thisday .checked{
+	border:1px solid blue;
+}
+.thisday td:nth-child(7) p{
+	color: red;
+}
+
+
+.top-7-right{
+	flex:1;
+	background-color: #fff;
+
+
+}
+
+.rank{
+	background-color: #fff;
+}
+ .rank table{
+	margin: 9px 20px;
+	width: 450px;
+	height: 270px;
+	border-color: #e1e1e1;
+	font-size: 14px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.rank tr td:nth-child(1){
+	width: 66px;
+}
+
+.rank tr td:nth-child(2){
+	width: 90px;
+}
+
+.rank tr:nth-child(2){
+	background-color: #f3f5f6;
+	
+}
+
+.rank tr:hover{
+	background-color: #F3F5F6;
+	
+}
+
+.bar{
+	margin-bottom: 2px;
+	display: inline-block;
+	width: 168px;
+	height: 4px;
+	background-color: #dcdcdc;
+}
+
+.bar .hot{
+	display: block;
+	z-index: 99;
+	margin-bottom: 2px;
+	height: 4px;
+}
+
+
+.hot-bar1{
+	width: 80%;
+	background-color: #ed6e52;
+	
+}
+
+.hot-bar2{
+	width: 70%;
+	background-color: #ef804f;
+	
+}
+
+.hot-bar3{
+	width: 59%;
+	background-color: #f19f4f;
+}
+
+.hot-gt{
+	background-color: #7fcbf0;
+}
+
+.hot-bar4{
+	width: 53%;
+}
+
+
+.hot-bar5{
+	width: 47%;
+}
+
+.hot-bar6{
+	width: 43%;
+}
+
+.hot-bar7{
+	width: 40%;
+}
+
+.hot-bar8{
+	width: 34%;
+}
+
+.hot-bar9{
+	width: 30%;
+}
+
+.hot-bar10{
+	width: 27%;
+}
+
+</style>
+</head>
+<body>
+<div class="main">
+	<div class="top">
+		<div class="left-logo float-left"></div>
+		<div class="top-center"></div>
+        <div class="right-top">
+        <div class="denglu float-right">
+        		登录
+        	</div>
+        	<div class="serach float-right">
+        		<div class="search-img float-left"></div>
+        		<input type="text" class="xiaocong">
+        	</div>
+        	
+        </div>
+	</div>
+	<div class="content">
+		<div class="left-content float-left">
+			<div class="left-content-img">
+				<div class="two-roul"></div>
+				<div class="name">Convey</div>
+			
+			</div>
+			<div class="left-content-star">
+				<ul class="clearfix li-ul">
+					<li class="li-1 float-left">
+						<p>收藏</p>
+						<p>110</p>
+					</li>
+					<li class="li-3 float-left"></li>
+					<li class="li-2 float-left">
+						<p>粉丝</p>
+						<p>313</p>
+					</li>
+				</ul>
+			</div>
+			<div class="left-content-lis">
+				<ul>
+					<li class="li-md-1"><div class="li-div-1"></div>个人报表
+                    <ul class="first-xiangqing">
+                    	<li class="baigong-1">
+                    		<span class="right-jiantou">></span>
+                    		<span class="right-wenjian"></span>
+                    		文件一
+                    	</li class="first-xiangqing-1">
+                    	<li>
+                    		<span class="right-jiantou">></span>
+                    		<span class="right-wenjian-1"></span>
+                    		文件二
+                    		<ul>
+                    			<li>
+                    				<span class='wendang-1'></span>
+                    				文档1
+                    			</li>
+                    			<li>
+                    				<span class='wendang-2'></span>
+                    				文档2
+                    			</li>
+                    		</ul>
+                    	</li>
+                    	<li class="first-xiangqing-1 baigong-1">
+                    		<span class="right-jiantou">></span>
+                    		<span class="right-wenjian"></span>
+                    		文件三
+                    	</li>
+                    </ul>
+					</li>
+					<li class="li-md-2"><div class="li-div-2"></div>个人收藏</li>
+					<li class="li-md-3"><div class="li-div-3"></div>我的分享</li>
+					<li class="li-md-4"><div class="li-div-4"></div>图库</li>
+					<li class="li-md-5"><div class="li-div-5"></div>成长记录</li>
+					<li class="li-md-6"><div class="li-div-6"></div>账户信息</li>
+				</ul>
+			</div>	
+		</div>
+		<div class="right-content float-left">
+		<div class="right-content-top">
+		<span class="czhan">'</span>
+			c站&nbsp
+			<span>/&nbsp</span>个人报表&nbsp/&nbsp文件一&nbsp/
+			<span class='threpeplo'>文档一</span>
+		</div>
+		<div class="right-center right-top-2">
+		<form action="" method="post">
+		<span class="country">
+          <label for="country">查询项</label>
+		  <select name="country" id="country" >
+						<option value="" disabled selected>第一项</option>
+						<option value="china">第二项</option>
+		  </select>
+		</span>
+		<span>
+			<div class="buy-ren">
+				 <label for="country">买方</label>
+		          <select name="country" class="buy">
+						<option value=""  selected>小A</option>
+						<option value="china">小B</option>
+		          </select>
+			</div>
+			<div class="sale-ren">
+				 <label for="country">卖方</label>
+		          <select name="country" class="buy">
+						<option value="" selected>小C</option>
+						<option value="">小B</option>
+		          </select>
+			</div>
+			<div class='chang'></div>
+			
+		</span>
+		<span>
+			<div class="buy-ren-1">
+				 <label for="country">日期</label>
+		          <select name="country" class="buy">
+						
+		          </select>
+			</div>
+			<div class="sale-ren-1">
+				 <label for="country">人数</label>
+		          <select name="country" class="buy duan">
+						
+		          </select>
+			</div>
+		</span>
+		<span>
+			<div class="buy-ren-2">
+				 <label for="country">总耗时</label>
+		          <select name="country" class="buy duan">
+						
+		          </select>
+			</div>
+			<div class="sale-ren-2">
+				 <label for="country">成交项</label>
+		          <select name="country" class="buy">
+						
+		          </select>
+			</div>
+		</span>
+		<input class="submit" type="submit" value="搜索"/>
+		</form>	
+		</div>
+		<div class="right-top-3 right-center">
+			<div class="left-arrow"><</div>
+		    <div class="arrow-center float-left">
+		   	 <ul>
+		   	 	<li>
+		   	 		<div class="time">10:00am</div>
+		   	 		<div class="money">￥<span>1000</span></div>
+		   	 	</li>
+		   	 	<li>
+		   	 		<div class="time">10:00am</div>
+		   	 		<div class="money">￥<span>6000</span></div>
+		   	 	</li>
+		   	 	<li>
+		   	 		<div class="time">10:00am</div>
+		   	 		<div class="money">￥<span>5000</span></div>
+		   	 	</li>
+		   	 	<li>
+		   	 		<div class="time">10:00am</div>
+		   	 		<div class="money">￥<span>4000</span></div>
+		   	 	</li>
+		   	 	<li>
+		   	 		<div class="time">10:00am</div>
+		   	 		<div class="money">￥<span>3000</span></div>
+		   	 	</li>
+		   	 	<li>
+		   	 		<div class="time">10:00am</div>
+		   	 		<div class="money">￥<span>1000</span></div>
+		   	 	</li>
+		   	 </ul>
+		    </div>
+		    <div class="left-arrow">></div>
+		    <div class="history-check float-left"><span class='history-check-img'></span>历史查询</div>
+		</div>
+		<div class="right-top-4 right-center">
+			2017年4月份统计
+		</div>
+		<dic class="right-top-5 right-center">
+			<ul>
+				<li class="heng-col-1">
+					<p class="box-p">13322</p>
+					<p class="box-p-1">成交量</p>
+					<div class="box-col-1"></div>
+				</li>
+				<li class="heng-col-2">
+					<p class="box-p">13322</p>
+					<p class="box-p-1">成交量</p>
+					<div class="box-col-2"></div>
+				</li>
+				<li class="heng-col-3">
+					<p class="box-p">13322</p>
+					<p class="box-p-1">成交量</p>
+					<div class="box-col-3"></div>
+				</li>
+				<li class="heng-col-4">
+					<p class="box-p">13322</p>
+					<p class="box-p-1">成交量</p>
+					<div class="box-col-4"></div>
+				</li>
+			</ul>
+		</dic>
+		<div class="right-top-6 right-center clearfix">
+			<div class="top-6-left float-left">
+				<div class="top-6-left-first">第一组</div>
+				<div class="project-item">
+					<ul>
+						<li>
+						<input type="radio"  name="project" checked="checked" class="tab-radio"/>
+						<span>项目一</span>
+						<div class="tab item-1">
+										<table cellspacing="0">
+											<tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+											<tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+											<tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+											<tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+											<tr><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+										</table>
+						</div>
+						</li>
+
+                  
+
+
+						<li>
+									<input type="radio" name="project" class="tab-radio"/>
+									<span>项目二</span>
+									<div class="tab item-2">
+										<table cellspacing="0">
+											<tr><td>购买材料二</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+											<tr><td>购买材料二</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+											<tr><td>购买材料二</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+											<tr><td>购买材料二</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+											<tr><td>购买材料二</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+										</table>
+									</div>
+								</li>
+								<li>
+									<input type="radio" name="project" class="tab-radio"/>
+									<span>项目三</span>
+									<div class="tab item-3">
+										<table cellspacing="0">
+											<tr><td>购买材料三</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+											<tr><td>购买材料三</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+											<tr><td>购买材料三</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+											<tr><td>购买材料三</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+											<tr><td>购买材料三</td><td>购买材料一</td><td>购买材料一</td><td>购买材料一</td></tr>
+										</table>
+									</div>
+								</li>
+								<li>
+									<input type="radio" name="project" class="tab-radio"/>
+									<span>项目四</span>
+									<div class="tab item-4">
+										<table cellspacing="0">
+											<tr><td>购买材料一</td><td>购买材料四一</td><td>购买材料一</td><td>购买材料一</td></tr>
+											<tr><td>购买材料一</td><td>购买材料四</td><td>购买材料一</td><td>购买材料一</td></tr>
+											<tr><td>购买材料一</td><td>购买材料四</td><td>购买材料一</td><td>购买材料一</td></tr>
+											<tr><td>购买材料一</td><td>购买材料四</td><td>购买材料一</td><td>购买材料一</td></tr>
+											<tr><td>购买材料一</td><td>购买材料四</td><td>购买材料一</td><td>购买材料一</td></tr>
+										</table>
+									</div>
+								</li>
+								<li>
+									<input type="radio" name="project" class="tab-radio"/>
+									<span>项目五</span>
+									<div class="tab item-5">
+										<table cellspacing="0">
+											<tr><td>购买材料一</td><td>购买材料一</td><td>购买材料五</td><td>购买材料一</td></tr>
+											<tr><td>购买材料一</td><td>购买材料一</td><td>购买材料五</td><td>购买材料一</td></tr>
+											<tr><td>购买材料一</td><td>购买材料一</td><td>购买材料五一</td><td>购买材料一</td></tr>
+											<tr><td>购买材料一</td><td>购买材料一</td><td>购买材料五</td><td>购买材料一</td></tr>
+											<tr><td>购买材料一</td><td>购买材料一</td><td>购买材料五</td><td>购买材料一</td></tr>
+										</table>
+									</div>
+								</li>
+						
+					</ul>
+				</div>
+				
+			
+		
+
+			</div>
+			<div class="top-6-right float-left">
+				<div class="top-6-left-two">第一组</div>
+				<div class="project-item project-item-1">
+			    <p class="the-title">标题</p>
+			    <p class="the-baobiao">项目报表三</p>
+			    <div class="table-one">
+			    		<table cellspacing="0">
+											<tr><td class="one">价格</td><td class="two">负责人</td></tr>
+											<tr><td class="three">徐金鹏</td><td class="four">徐铁玲</td></tr>
+											
+						</table>
+						<p class="the-title">项目描述</p>
+						<textarea name="hehe" id="" cols="30" rows="7">该项目目前的项目负责人是。。。。。</textarea>
+
+			    </div>
+			    <div class="bottom">
+			    	<input type="checkbox" name="checkbox" class="checkbox"/><span>签署协议</span><input class="submit-1" type="submit" value="搜索"/>
+			    </div>
+				</div>
+			</div>
+		</div>
+		<div class="right-top-7 right-center clearfix">
+			<div class="top-7-left float-left">
+				<div class="top-7-left-first">日历</div>
+				<div class="top-7-left-content">
+					<div class="four-input clearfix">
+					<ul>
+						<li>
+					    <select name="country" class="buy-1">
+						<option value="" selected>2017年</option>
+						
+		                </select>
+						</li>
+						<li>
+						<select name="country" class="buy-1">
+						<option value="" selected>五月</option>
+						<option value="">小B</option>
+		                </select>
+						</li>
+						<li>
+						<select name="country" class="buy-1">
+						<option value="" selected>标注日期</option>
+						<option value="">小B</option>
+		                </select>
+						</li>
+						<li>
+					    <select name="country" class="buy-1">
+						<option value="" selected>返回今天</option>
+						<option value="">小B</option>
+		                </select>
+						</li>
+					</ul>
+					</div>
+					<div class="sunday">
+						<ul>
+							<li>一</li>
+							<li>二</li>
+							<li>三</li>
+							<li>四</li>
+							<li>五</li>
+							<li>六</li>
+							<li>日</li>
+						</ul>
+					</div>
+					<div class="thisday">
+						<table>
+						<tr class="day">
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td class="jieri">
+										<p>1</p>
+										<span>愚人节</span>
+									</td>
+									<td>
+										<p>2</p>
+										<span>廿五</span>
+									</td>
+									<td>
+										<p>3</p>
+										<span>廿六</span>
+									</td>
+								</tr>
+								<tr class="day">
+									<td>
+										<p>4</p>
+										<span>廿七</span>
+									</td>
+									<td class="jieri">
+										<p>5</p>
+										<span>清明</span>
+									</td>
+									<td>
+										<p>6</p>
+										<span>廿九</span>
+									</td>
+									<td>
+										<p>7</p>
+										<span>三月</span>
+									</td>
+									<td>
+										<p>8</p>
+										<span>初二</span>
+									</td>
+									<td class="checked">
+										<p>9</p>
+										<span>初三</span>
+									</td>
+									<td>
+										<p>10</p>
+										<span>初四</span>
+									</td>
+								</tr>
+								<tr class="day">
+									<td>
+										<p>11</p>
+										<span>初五</span>
+									</td>
+									<td class="checked">
+										<p>12</p>
+										<span>初六</span>
+									</td>
+									<td>
+										<p>13</p>
+										<span>初七</span>
+									</td>
+									<td>
+										<p>14</p>
+										<span>初八</span>
+									</td>
+									<td>
+										<p>15</p>
+										<span>初九</span>
+									</td>
+									<td>
+										<p>16</p>
+										<span>初十</span>
+									</td>
+									<td>
+										<p>17</p>
+										<span>十一</span>
+									</td>
+								</tr>
+								<tr class="day">
+									<td>
+										<p>18</p>
+										<span>十二</span>
+									</td>
+									<td class="checked">
+										<p>19</p>
+										<span>十三</span>
+									</td>
+									<td>
+										<p>20</p>
+										<span>十四</span>
+									</td>
+									<td>
+										<p>21</p>
+										<span>十五</span>
+									</td>
+									<td>
+										<p>22</p>
+										<span>十六</span>
+									</td>
+									<td>
+										<p>23</p>
+										<span>十七</span>
+									</td>
+									<td>
+										<p>24</p>
+										<span>十八</span>
+									</td>
+								</tr>
+								<tr class="day">
+									<td>
+										<p>25</p>
+										<span>十九</span>
+									</td>
+									<td>
+										<p>26</p>
+										<span>廿十</span>
+									</td>
+									<td>
+										<p>27</p>
+										<span>廿一</span>
+									</td>
+									<td>
+										<p>28</p>
+										<span>廿二</span>
+									</td>
+									<td>
+										<p>29</p>
+										<span>廿三</span>
+									</td>
+									<td>
+										<p>30</p>
+										<span>廿四</span>
+									</td>
+									<td></td>
+								</tr>
+							</table>
+					</div>
+				</div>
+			</div>
+			<div class="top-7-right float-left">
+				<div class="header">
+							汽车行业品牌榜
+						</div>
+
+						
+						<div class="rank">
+							<table border="1" cellspacing="0" cellpadding="0">
+								<tr>
+									<th>
+										排名
+									</th>
+									<th>
+										品牌
+									</th>
+									<th>
+										搜索指数
+									</th>
+								</tr>
+								
+								<tr>
+									<td>
+										1
+									</td>
+									<td>
+										大众
+									</td>
+									<td>
+										48912001
+										<span class="bar"><span class="hot hot-bar1"></span></span>
+										
+									</td>
+								</tr>
+								
+								<tr>
+									<td>
+										2
+									</td>
+									<td>
+										丰田
+									</td>
+									<td >
+										29307333
+										<span class="bar"><span class="hot hot-bar2"></span></span>
+										
+									</td>
+								</tr>
+								
+								<tr>
+									<td>
+										3
+									</td>
+									<td>
+										奥迪
+									</td>
+									<td>
+										23139070
+										<span class="bar">
+										<span class="hot hot-bar3"></span></span>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>
+										4
+									</td>
+									<td>
+										本田
+									</td>
+									<td >
+										22885564
+										<span class="bar"><span class="hot hot-gt hot-bar4"></span></span>
+										
+									</td>
+								</tr>
+								
+								<tr>
+									<td>
+										5
+									</td>
+									<td>
+										福特
+									</td>
+									<td>
+										22324792
+										<span class="bar"><span class="hot hot-gt hot-bar5"></span>
+									</td>
+								</tr>
+								
+								<tr>
+									<td>
+										6
+									</td>
+									<td>
+										宝马
+									</td>
+									<td>
+										21444077
+										<span class="bar"><span class="hot hot-gt hot-bar6"></span>
+										
+									</td>
+								</tr>
+								
+								<tr>
+									<td>
+										7
+									</td>
+									<td>
+										现代
+									</td>
+									<td>
+										20114969
+										<span class="bar"><span class="hot hot-gt hot-bar7"></span>
+										
+									</td>
+								</tr>
+								
+								<tr>
+									<td>
+										8
+									</td>
+									<td>
+										起亚
+									</td>
+									<td>
+										19251680
+										<span class="bar"><span class="hot hot-gt hot-bar8"></span>
+										
+									</td>
+								</tr>
+								
+								<tr>
+									<td>
+										9
+									</td>
+									<td>
+										奔驰
+									</td>
+									<td>
+										19172837
+										<span class="bar"><span class="hot hot-gt hot-bar9"></span>
+										
+									</td>
+								</tr>
+								
+								<tr>
+									<td>
+										10
+									</td>
+									<td>
+										别克
+									</td>
+									<td>
+										18544027
+										<span class="bar"><span class="hot hot-gt hot-bar10"></span>
+										
+									</td>
+								</tr>
+							</table>
+						</div>
+						
+			</div>
+		</div>
+		   
+			
+		</div>
+
+	</div>
+</div>
+    
+</body>
+</html>

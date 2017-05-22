@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>css3的新特性</title>
+<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.center{
+	  margin: 0 auto;
+	}
+	.top-table table{
+		margin-top: 30px;
+
+
+	}
+
+	.top-table th{
+		color: #fff;
+		background-color: black !important;
+		text-align: left;
+		
+
+	}
+	.top-table th,.top-table td{
+		border: 1px solid #fff;
+	}
+	.top-table tr td:nth-child(1){
+		text-align: left;
+	}
+	.top-table tr td{
+		padding-right: 30px;
+	}
+	.top-table tr:nth-child(2) td,.top-table tr:nth-child(3) td,.top-table tr:nth-child(4) td{
+		color: red;
+	}
+	.top-table tr:nth-child(2n+1) td{
+		background-color: gray;
+
+	}
+	.two-input{
+    margin-top: 30px;
+    width: 400px;
+    text-align: center;
+
+	}
+	.two-input input{
+		width: 200px;
+		margin-top: 30px;
+
+	}
+	.fir-input{
+    
+    height: 40px;
+    line-height: 30px;
+
+
+	}
+
+	.wto-input:focus{
+		
+   width: 300px;
+
+
+		border: 1px solid gray;
+		border-radius: 5px;
+		box-shadow: -1px -1px -1px #888888;
+		transition:width 1s linear;
+		moz-transition:width 1s linear;
+		-o-transition:width 1s linear;
+		-webkit-transition:width 1s linear;
+		
+
+
+	}
+	.three-box{
+		text-align: center;
+		width: 400px;
+		height: 100px;
+		position: relative;
+
+
+	}
+	.three-box ul{
+		list-style: none;
+		margin-left: 218px;
+		margin-top: 178px;
+	}
+	.three-box ul li{
+		width: 20px;
+		height: 20px;
+		margin-right: 10px;
+		position: relative;
+		float: left;
+		
+	}
+	
+	.three-box ul input{
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		display: inline-block;
+		opacity: 0;
+		z-index: 100;
+		cursor: pointer;
+
+	}
+	.three-box ul input:checked+span+div{
+		display:flex;
+	}
+	.three-box ul span{
+		position: absolute;
+		border: 1px solid gray;
+		width: 20px;
+		height: 20px;
+		z-index: 99;
+		color: #fff;
+		background-color: rgb(124,193,126);
+		
+
+	}
+	.three-box ul div{
+		width: 200px;
+		height: 100px;
+		position: absolute;
+		
+		
+		top: -73px;
+		display: none;
+	}
+	.box-1{
+background: red;
+left: -101px;
+	}
+	.box-2{
+background: #fff;
+left: -131px;
+display:flex;
+flex-direction:row;
+position: relative;
+	}
+	.box-3{
+background: skyblue;
+left: -161px;
+	}
+	.three-box ul .box-2 div{
+		
+		flex:1;
+		display: block;
+		position: absolute;
+		
+		top: 0;
+		
+	}
+		.three-box ul .box-2 .box-4{
+		background: red;
+	
+	}
+		.three-box ul .box-2 .box-5{
+		background: skyblue;
+		width: 100px;
+		left: 50%;
+	}
+</style>
+</head>
+<body>
+<div class="main">
+	<div class="top-table">
+		<table border="1" cellspacing="0" cellpadding="0" class="center">
+			<tr>
+				<th>排名</th>
+				<th>网站</th>
+				<th>热度</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>徐金鹏</td>
+				<td>1000</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>姜不努力聪</td>
+				<td>2000</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>王要三</td>
+				<td>3000</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>heihie</td>
+				<td>4000</td>
+			</tr>
+				<tr>
+				<td>5</td>
+				<td>heihie</td>
+				<td>4000</td>
+			</tr>
+				<tr>
+				<td>6</td>
+				<td>heihie</td>
+				<td>4000</td>
+			</tr>
+				<tr>
+				<td>7</td>
+				<td>heihie</td>
+				<td>4000</td>
+			</tr>
+				<tr>
+				<td>8</td>
+				<td>heihie</td>
+				<td>4000</td>
+			</tr>
+				<tr>
+				<td>9</td>
+				<td>heihie</td>
+				<td>4000</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td>heihie</td>
+				<td>4000</td>
+			</tr>
+				
+		</table>
+		<div class="two-input center">
+			<input type="text" class="fir-input">
+			<input type="text" class="wto-input">
+		</div>
+		<div class="three-box center">
+			<ul>
+				<li>
+				<input type="radio"   name="project">
+				<span>1</span>
+				<div class="box-1"></div>
+				</li>
+				<li>
+				<input type="radio"   name="project">
+				<span>2</span>
+				<div class="box-2">
+					<div class="box-4"></div>
+					<div class="box-5"></div>
+				</div>
+				</li>
+				<li>
+				<input type="radio" checked="checked"  name="project">
+				<span>3</span>
+				<div class="box-3"></div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+    
+</body>
+</html>

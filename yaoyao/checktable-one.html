@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>表单一：单个表单项的检验</title>
+	<style>
+    *{
+    	padding:0;
+    	margin: 0;
+    }
+    .one{
+    	height: 100px;
+    	width: 1000px;
+    	margin: 0 auto;
+    	margin-top: 50px;
+    }
+    .one input:nth-of-type(1){
+    	width: 300px;
+    	margin-left: 30px;
+    	height: 40px;
+    	margin-right: 30px;
+        font-size: 20px;
+
+    }
+    .one input:nth-of-type(2){
+    	width: 100px;
+    	height: 40px;
+    	line-height: 40px;
+    	font-size: 20px;
+    	font-weight: bold;
+    	background-color: rgb(47,121,186);
+    	color: #fff;
+    	text-align: center;
+    	border: 0;
+    	cursor: pointer;
+    }
+    .one div{
+    	margin-top: 10px;
+    	color: rgb(171,171,171);
+    	margin-left: 70px;
+    }
+	</style>
+</head>
+<body>
+<div class="main">
+	<div class="one">
+	    <label for="">名称</label>
+		<input type="text" class="txt"/><input type="button" value="验证" class="yanzheng" />
+		<div class="ti-xing-1">必填，长度为4到16个字符</div>
+	</div>
+	<div class="one">
+	    <label for="">名称</label>
+		<input type="text" class="txt-1"/><input type="button" value="验证" class="yanzheng" />
+		<div class="ti-xing-2"></div>
+	</div>
+	<div class="one">
+	    <label for="">名称</label>
+		<input type="text" class="txt-2"/><input type="button" value="验证" class="yanzheng" />
+		<div class="ti-xing">格式为汉字+英文</div>
+	</div>
+</div>
+	
+</body>
+</html>
+<script type="text/javascript">
+var yanzheng=document.getElementsByClassName('yanzheng');
+var yanBtn=yanzheng[0],
+    zhengBtn=yanzheng[1],
+    yanzhengBtn=yanzheng[2];
+    
+
+
+function getStrLen (str){
+        var enLen = 0;
+        var zhLen = 0;
+        for (var i = 0; i < str.length; i++) {
+        	if (isASCII(str[i])){
+
+                enLen++;
+            }
+            else {
+
+                zhLen++;
+            }
+        };
+     
+        return enLen + zhLen * 2;  
+}
+
+
+function isASCII (c) {
+	//方法二:进行匹配替换
+	// var input_value=document.getElementsByClassName('txt-2')[0].value;
+ //    var RegYchinese = /[\u4E00-\u9FA5]/g;//汉字
+ //    var regNchinese = /[^\u4E00-\u9FA5\uf900-\ufa2d]/g; //匹配非中文
+ //    var Regtrim = /^\s+|\s+$/g;  // 删除字符串两侧的空白字符
+   
+        return c.codePointAt(0) <= 0xFF;
+
+}
+
+function yanBtnClick(){
+	var input=document.getElementsByClassName('txt')[0].value;
+	var ti=document.getElementsByClassName('ti-xing-1')[0];
+	// input.replace(/[^x00-xff]/g,'ab');
+
+	
+	var num=getStrLen(input);
+	console.log(num);
+	if (4<=num && num<=16) {
+		ti.innerHTML="格式正确";
+		ti.style.color='rgb(171,171,171)';
+	}else{
+		ti.innerHTML='格式不正确，请输入4-16位字符';
+		ti.style.color='red';
+	}
+
+
+}   
+function zhengBtnClick(){
+     var input=document.getElementsByClassName('txt-1')[0].value;
+     var ti=document.getElementsByClassName('ti-xing-2')[0];
+	 var num=getStrLen(input);
+	 if (!num) {
+       ti.innerHTML='姓名不能为空';
+       ti.style.color='rgb(171,171,171)';
+
+	 }else{
+	 	ti.style.display='none';
+	 	ti.style.color='red';
+	 }
+} 
+function yanzhengBtnClick(){
+	var input=document.getElementsByClassName('txt-2')[0].value;
+	var ti=document.getElementsByClassName('ti-xing')[0];
+	var fir=input[0];
+	console.log(fir);
+	if (!isASCII(fir)) {
+		var fir1=input[input.length-1];
+		if (isASCII(fir1)) {
+           ti.innerHTML='格式正确';
+           ti.style.color='rgb(171,171,171)';
+		}else{
+			ti.innerHTML='格式不正确';
+			ti.style.color='red';
+		}
+
+	}else{
+			ti.innerHTML='格式不正确'
+			ti.style.color='red';
+		}
+
+}
+
+
+window.onload=function(){
+	yanBtn.onclick=yanBtnClick;
+	zhengBtn.onclick=zhengBtnClick;
+	yanzhengBtn.onclick=yanzhengBtnClick;
+
+
+}
+
+	
+</script>

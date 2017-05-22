@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>表单联动</title>
+	<style>
+  *{
+  	padding: 0;
+  	margin: 0;
+  }
+  .main{
+  	padding-top: 50px;
+  	padding-left: 40px;
+  }
+  .main ul{
+    list-style: none;
+  }
+  .main ul li{
+  	float: left;
+  	margin-right: 50px;
+  }
+  .main ul li div{
+  	display: none;
+  }
+  .main ul li input:checked + span +div{
+  	display: flex;
+  }
+  .one,.two{
+  	position: relative;
+  }
+  .secle{
+      position: absolute;
+     
+      top: 50px;
+      display: flex;
+      flex-direction:row;
+
+
+  }
+  .secle select{
+  	width: 200px;
+  	height: 30px;
+  	margin-right: 10px;
+  }
+  .secle option{
+  	height: 30px;
+  }
+  .secle span{
+  	width: 70px;
+  	height: 30px;
+  	line-height: 30px;
+  	font-family: '宋体';
+  	font-size: 20px;
+  }
+  .work{
+       position: absolute;
+      top: 50px;
+      left: -113px;
+      display: flex;
+      flex-direction:row;
+      display: none;
+
+  }
+  .work span{
+  	width: 100px;
+  	height: 40px;
+  	line-height: 40px;
+  	font-family: '宋体';
+  	font-size: 20px;
+  }
+  .work input{
+  		width: 300px;
+  	height: 30px;
+  }
+
+	</style>
+</head>
+<body>
+<div class="main">
+	<ul>
+		<li class="one">
+			<input type="radio" name="xiaocong" checked="checked" /><span>在校生</span>
+			<div class="secle"><span>学校</span>
+				<select name="xiao" id="city"  onchange="showpayee()">
+				<option value="0" selected>北京</option>
+				<option value="1">上海</option>
+				<option value="2">武汉</option>
+				<option value="3">郑州</option>
+			    </select>
+			    <select name="daxue" id="daxue" class="daxue">
+			    <option value="0" selected>北京大学</option>
+				<option value="1">清华大学</option>
+				<option value="2">北京石油大学</option>
+				<option value="3">中国政法大学</option>
+			    </select>
+			</div>			
+		</li>
+		<li class="two">
+			<input type="radio" name="xiaocong" /><span>非在校生</span>
+			<div class="work">
+				<span>工作单位</span><input type="text" />
+			</div>
+		</li>
+	</ul>
+</div>
+	
+</body>
+</html>
+<script type='text/javascript'>
+    var city=document.getElementById('city');
+    var daxue=document.getElementById('daxue');
+    var daxues=['北京大学','清华大学','北京石油大学','中国政法大学'];
+    var daxues1=['上海交通大学','复旦大学','华东师范大学','上海财经大学'];
+    var daxues2=['武汉大学','华中科技大学','中国地质大学','湖北美术学院'];
+    var daxues3=['郑州大学','河南大学','河南理工大学','河南科技大学'];
+    var allArray=[daxues,daxues1,daxues2,daxues3];
+
+
+window.onload=function(){
+    	
+    }
+	
+function showpayee(){
+
+   var num=city.value;
+   
+   if (daxue.children.length) {
+   	var len=daxue.children.length;
+   	for (var j = 0; j <len ; j++) {
+   		daxue.removeChild(daxue.children[0]);
+   	};
+   };
+   
+   for (var i = 0; i < allArray[num].length; i++) {
+
+    		var option=document.createElement('option');
+    		option.innerHTML=allArray[num][i];
+    		daxue.appendChild(option);
+
+    	};
+	}
+</script>

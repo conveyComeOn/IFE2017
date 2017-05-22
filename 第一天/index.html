@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>自定义checkbox和radio</title>
+    <style>
+    
+    input{
+        display: none;
+        margin: 0;
+    }
+    .checkBox{
+     margin: 30px;
+        font-weight: 700px;
+
+    }
+    .checkbox+label,.radios+label{
+        height: 16px;
+        width: 16px;
+        border: 1px solid  #d9d9d9;
+        display:flex;
+       /* display: webkit-flex;*/
+
+
+    }
+    .checkbox:checked+label,.radios:checked+label{
+        border: 1px solid red;
+        font-weight: 700px;
+
+
+    }
+    .radio{
+        margin-top: 30px;
+      display: -webkit-flex;
+      display: flex;
+      width: 50px;
+      justify-content:space-between;
+      -webkit-justify-content:space-between;
+    }
+    .radios+label{
+        border-radius: 50%;
+    }
+ 
+/*    .checkBox:checked+label::after,.radios:checked+label::after{
+  margin: auto;
+  content: '27';
+  color: red;
+  width:8px;
+  height:8px
+  line-height: 8px;
+  text-align: center;
+  font-size: 12px;
+}*/
+
+
+    .checkbox:checked+label::after,.radios:checked+label::after{
+        margin: auto;
+        content: '287';
+        width: 8px;
+        height: 8px;
+        line-height: 8px;
+        text-align: center;
+        font-size: 12px;
+        
+
+    }
+    .radios:checked+label::after{
+         
+        color: red;
+        border-radius: 50%;
+        width: 8px;
+        height: 8px;
+         content: ' ';
+  background: #d73d32;
+
+    }
+    .checkBox_sprit+label,.radioBox_sprit+label{
+  width: 16px;
+  height:16px;
+  border:none;
+  display: inline-block;
+  background:url('images/check.png') no-repeat;
+}
+.checkBox_sprit+label{
+  background-position:-25px -32px;
+}
+.radioBox_sprit+label{
+  background-position: -24px -10px;
+}
+.checkBox_sprit:checked+label{
+  background-position: -60px -32px;
+}
+.radioBox_sprit:checked+label{
+  background-position: -59px -10px;
+}
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="checkBox">
+        <input type="checkbox" name="" id="checkbox" class="checkbox" />
+        <label for="checkbox"></label>
+    </div>
+    <div class="radio">
+        <input type="radio" name="sex" class="radios" id="radiobox" />
+        <label for="radiobox"></label>
+        <input type="radio" name="sex" class="radios" id="radiobox1" />
+        <label for="radiobox1"></label>
+
+    </div>
+     <h2>雪碧图实现：</h2>
+        <div class="checkbox">
+            <input type="checkbox" name="" id="checkBox_sprit" class="checkBox_sprit">
+            <label for="checkBox_sprit"></label>
+        </div>
+        <div class="radio">
+            <input type="radio" name="sex1"  id="radioBox_sprit" class=" radioBox_sprit">
+            <label for="radioBox_sprit"></label>
+            <input type="radio" name="sex1"  id="radioBox1_sprit" class=" radioBox_sprit">
+            <label for="radioBox1_sprit"></label>
+        </div>
+</div>
+
+    
+</body>
+</html>

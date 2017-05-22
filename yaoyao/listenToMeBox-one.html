@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>让你听话你就得听话</title>
+	<style>
+     *{
+     	padding: 0;
+     	margin: 0;
+     }
+     .main{
+     	
+     	padding-top: 100px;
+     }
+     .main table{
+     	margin: 0 auto;
+     	border: none;
+          overflow: hidden;
+     }
+     th,td{
+     	width: 30px;height: 30px;
+     }
+     td{
+     	border: 1px solid gray;
+     	text-align: center;
+     	color: black;
+     	font-family: '黑体';
+     	font-weight: bold;
+     }
+     
+     table tr th{
+     	text-align: center;
+     	border: none;
+     }
+     .main table tr td:nth-child(1){
+          border: none;
+     }
+     .listenme{
+     	width: 300px;
+     	height: 40px;
+     	padding-left: 40px;
+     		margin: 0 auto;
+
+     }
+     .listenme input{
+     	width: 48px;
+     	height: 30px;
+     	border: none;
+     	margin-right: 5px;
+     	margin-top: 20px;
+     	cursor: pointer;
+
+     }
+     .move{
+          position: relative;
+     }
+     .box{
+          -webkit-transform:rotate(0deg);
+          position: absolute;
+          left: 0;
+          top: 0;
+          height: 100%;
+          width: 100%;
+        
+          display: flex;
+          flex-direction:column;
+          display: none;
+
+
+     }
+     .box-1{
+       height: 20%;
+       width: 100%;
+       background-color: red;
+     }
+     .box-2{
+          height: 80%;
+          width: 100%;
+          background-color: blue;
+     }
+	</style>
+</head>
+<body>
+ 
+ <div class="main">
+ 	<table border="1" cellspacing="0" cellpadding="0">
+ 	<tr>
+ 	    <th></th>
+ 		<th>1</th>
+ 		<th>2</th>
+ 		<th>3</th>
+ 		<th>4</th>
+ 		<th>5</th>
+ 		<th>6</th>
+ 		<th>7</th>
+ 		<th>8</th>
+ 		<th>9</th>
+ 		
+ 	</tr>
+ 	<tr>
+ 		<td>1</td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 	</tr>
+ 	<tr>
+ 		<td>2</td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 	</tr>
+ 	<tr>
+ 		<td>3</td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 	</tr>
+ 	<tr>
+ 		<td>4</td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 	</tr>
+ 	<tr>
+ 		<td>5</td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td class="move"><div class="box" style="left:0px; top:0px; -webkit-transform:rotate(0deg);"><span class='box-1'></span><span class='box-2'></span></div></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 	</tr>
+ 	<tr>
+ 		<td>6</td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 	</tr>
+ 	<tr>
+ 		<td>7</td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 	</tr>
+ 	<tr>
+ 		<td>8</td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 	</tr>
+ 	<tr>
+ 		<td>9</td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 		<td></td>
+ 	</tr>
+ 		
+ 	</table>
+ 	<div class="listenme">
+ 	<input type="button" value="START" />
+ 		<input type="button" value="Go" />
+ 		<input type="button" value="复位" />
+ 		<input type="button" value="left" />
+ 		<input type="button" value="right" />
+ 	</div>
+ </div>
+	
+</body>
+</html>
+<script type='text/javascript'>
+  var btns=document.getElementsByTagName('input'),
+      btn1=btns[0],
+      btn2=btns[1],
+      btn3=btns[2],
+      btn4=btns[3],
+      btn5=btns[4];
+      box=document.getElementsByClassName('box')[0];
+      var i=0;
+
+function go(){
+     var top=parseInt(box.style.top);
+     var left=parseInt(box.style.left);
+     var de=box.style.transform;
+     
+     if (de=="rotate(0deg)") {
+          
+           top-=32;
+           if(top<-128){
+               top=-128
+           }
+     box.style.top=top+'px';
+     }else if (de=='rotate(90deg)' || de=="rotate(-270deg)") {
+          left+=32;
+              if(left>128){
+               left=128
+           }
+     box.style.left=left+'px';
+     }else if (de=='rotate(180deg)' || de=="rotate(-180deg)") {
+              top+=32;
+              if(top>128){
+               top=128
+           }
+     box.style.top=top+'px';
+     }else if (de=='rotate(270deg)' || de=="rotate(-90deg)"){
+          console.log(de=="rotate(-90deg)"?1:2);
+                 left-=32;
+                 if(left<-128){
+               left=-128
+           }
+     box.style.left=left+'px';
+     }
+    
+
+}
+function fuwei(){
+     box.style.top=0;
+     box.style.left=0;
+      box.style.transform="rotate(0deg)";
+      i=0;
+}
+function goleft(){
+     i++;
+     var leftnum=i%4; 
+     
+      leftnum=Math.abs(leftnum);
+      if (leftnum==0) {
+       box.style.transform="rotate(0deg)";
+      }else if (leftnum==1) {
+         box.style.transform="rotate(-90deg)"; 
+      }else if (leftnum==2) {
+          box.style.transform="rotate(-180deg)"; 
+      }else if (leftnum==3) {
+          box.style.transform="rotate(-270deg)"; 
+      };
+}
+function goright(){
+   i--;
+     var leftnum=i%4; 
+      leftnum=Math.abs(leftnum);
+      if (leftnum==0) {
+       box.style.transform="rotate(0deg)";
+      }else if (leftnum==1) {
+         box.style.transform="rotate(90deg)"; 
+      }else if (leftnum==2) {
+          box.style.transform="rotate(180deg)"; 
+      }else if (leftnum==3) {
+          box.style.transform="rotate(270deg)"; 
+      };
+}
+  
+  window.onload=function(){
+     btn1.onclick=function(){
+        box.style.display='flex';
+        fuwei();
+     }
+     btn2.onclick=go;
+     btn3.onclick=fuwei;
+     btn4.onclick=goleft;
+     btn5.onclick=goright;
+  }
+     
+</script>

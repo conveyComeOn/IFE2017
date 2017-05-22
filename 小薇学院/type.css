@@ -1,0 +1,38 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2017-03-02 19:49:12
+ * @version $Id$
+ */
+ *{
+ 	padding: 0;
+ 	margin: 0;
+
+ }
+ .main{
+
+ }
+ .link{
+position: relative;
+background-color: rgb(51,51,51);
+ }
+ .link h1{
+ 	margin-left: 20px;
+ 	margin-top: 10px;
+ 	margin-bottom: 10px;
+
+ }
+ ul{
+ 	position: absolute;
+    right: 0;
+    top: 10px;
+ }
+ li{
+ 	float: left;
+ 	margin-left: 5px;
+ 	
+ }
+ li a{
+ 	list-style: none;
+ }

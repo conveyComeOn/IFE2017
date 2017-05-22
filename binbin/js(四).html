@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>IEF 2017-spring JavaScript Task 04</title>
+<style>
+	.box ul{
+display: flex;
+flex-direction:row;
+list-style: none;
+width: 500px;
+
+	}
+	.box ul li{
+		margin-right: 10px;
+		flex:1;
+		height: 40px;
+		background-color: skyblue;
+		text-align: center;
+		line-height: 40px;
+		color: #fff;
+		font-size: 20px;
+		padding: 20px;
+	}
+</style>
+</head>
+<body>
+<div class="main">
+	<div class="top" id="top">
+		<input type="number" class="input" id="input">
+		<button id="left-in">左侧入</button>
+		<button id="right-in">右侧入</button>
+		<button id="left-out">左侧出</button>
+		<button id="right-out">右侧出</button>
+
+	</div>
+	<div class="box">
+		<ul class="ul" id="ul">
+			<li>3</li>
+			<li>5</li>
+			<li>10</li>
+			<li>6</li>
+			<li>8</li>
+			<li>2</li>
+		</ul>
+	</div>
+</div>
+    <script type='text/JavaScript'>
+    var leftru=document.getElementById('left-in');
+    var rightout=document.getElementById('right-out');
+    var rightru=document.getElementById('right-in');
+    var leftout=document.getElementById('left-out');
+     var ul=document.getElementById('ul');
+     var lis=ul.getElementsByTagName('li');
+        
+    function leftruclick(){
+        var li =document.createElement('li');
+             var input=document.getElementById('input').value;
+             if (!input) return;
+     li.innerHTML=input;
+// insertBefore() 方法：可以在已有子节点前插入一个新的子节点。语法：insertChild(newchild,refchild)
+    ul.insertBefore(li,ul.firstChild);
+
+    }
+    function rightruclick(){
+            var li =document.createElement('li');
+             var input=document.getElementById('input').value;
+             if (!input) return;
+     li.innerHTML=input;
+    ul.appendChild(li);
+    }
+    function leftoutclick(){
+    	
+    	
+    	if (lis.length<=0)  return;
+    
+        alert(lis[0].innerHTML);
+    	ul.removeChild(lis[0]);
+    	
+    }
+    function rightoutclick(){
+
+if (lis.length<=0)  return;
+    alert(lis[lis.length-1].innerHTML);
+    	ul.removeChild(lis[lis.length-1]);
+
+    }
+    function liclick(){
+    	alert(this.innerHTML);
+    	  	ul.removeChild(this);
+    }
+    function init(){
+         leftru.onclick=leftruclick;
+         rightru.onclick=rightruclick;
+         leftout.onclick=leftoutclick;
+          rightout.onclick=rightoutclick;
+          for (var i = 0; i < lis.length; i++) {
+          	lis[i].onclick=liclick;
+          };
+    }
+    init();
+
+    </script>
+</body>
+</html>
