@@ -297,7 +297,6 @@ function go(){
            }
      box.style.top=top+'px';
      }else if (de=='rotate(270deg)' || de=="rotate(-90deg)"){
-          console.log(de=="rotate(-90deg)"?1:2);
                  left-=31;
                  if(left<-128){
                left=-128
@@ -346,7 +345,7 @@ function mleft(){
   // box.style.animationName="moveleft";
   // console.log(box.style.animationName);
   current =  - 90;  
-  box.style.transform =   'rotate('+current+'deg)';
+  box.style.transform ='rotate('+current+'deg)';
   go();
 }
 function mtop(){

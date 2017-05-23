@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>UI组件之排序表格</title>
+<style>
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.main{
+		padding-top: 30px;
+		margin-left: 30px;
+
+	}
+	table{
+		border-collapse:collapse;
+	}
+	table td{
+		width: 120px;
+		height: 40px;
+		background-color: rgb(60,60,60);
+		text-align: center;
+		color:#fff;
+	}
+	  .upBtn {
+            position: relative;
+            left:10px;
+            top: -7px;
+            display: inline-block;
+            width:0;
+            height:0;
+            border-bottom:10px solid #fff;     /*设置并显示上边框*/
+            border-top:none;             /*不设置下边框*/
+            border-left:10px solid transparent;     /*设置但隐藏左边框*/
+            border-right:10px solid transparent;    /*设置但隐藏右边框*/
+        }
+
+        .downBtn {
+            position: relative;
+            left:-9px;
+            bottom: -7px;
+            display: inline-block;
+            width:0;
+            height:0;
+            border-top:10px solid #fff;     /*设置并显示上边框*/
+            border-bottom:none;             /*不设置下边框*/
+            border-left:10px solid transparent;     /*设置但隐藏左边框*/
+            border-right:10px solid transparent;    /*设置但隐藏右边框*/
+        }
+
+</style>
+</head>
+<body>
+<div class="main">
+	<table border="1" collapse='collapse'>
+	<tr>
+		<td>姓名</td>
+		<td>语文<span class=upBtn></span><span class='downBtn'></span></td>
+		<td>数学<span class=upBtn></span><span class='downBtn'></span></td>
+		<td>英语<span class=upBtn></span><span class='downBtn'></span></td>
+		<td>总分<span class=upBtn></span><span class='downBtn'></span></td>
+	</tr>
+		
+	</table>
+</div>
+    
+</body>
+</html>
+
+<script type='text/javascript'>
+   //表头数据
+    var tabHeader = {
+        heads: [{
+            name: 'name',
+            label: '姓名',
+            sortable: false
+        }, {
+            name: 'chinese',
+            label: '语文',
+            sortable: true
+        }, {
+            name: 'math',
+            label: '数学',
+            sortable: true
+        }, {
+            name: 'english',
+            label: '英语',
+            sortable: true
+        }, {
+            name: 'total',
+            label: '总分',
+            sortable: true
+        }]
+    };
+
+    //表格内容数据
+    var datas = [
+        {
+            name: '小明',
+            chinese: 90,
+            math: 100,
+            english: 70,
+            total: 260
+        },
+        {
+            name: '小花',
+            chinese: 90,
+            math: 70,
+            english: 80,
+            total: 240
+        },
+        {
+            name: '小红',
+            chinese: 70,
+            math: 90,
+            english: 70,
+            total: 230
+        },
+        {
+            name: '小桃',
+            chinese: 60,
+            math: 100,
+            english: 90,
+            total: 250
+        },
+        {
+            name: '小张',
+            chinese: 80,
+            math: 80,
+            english: 70,
+            total: 230
+        }
+    ];
+
+var downBtns=document.getElementsByClassName('downBtn');
+var upBtns=document.getElementsByClassName('upBtn');
+var chinaArray=[],
+    nameArray=[],
+    mathArray=[],
+    englishArray=[],
+    totalArray=[],
+    allArray=[];
+var table=document.getElementsByTagName('table')[0];
+function init(data){
+	
+	for (var i = 0; i < data.length; i++) {
+		var tr=document.createElement('tr');
+		for (var j = 0; j< 5; j++) {
+			var th=document.createElement('th');
+				if (j==0) {
+              th.innerHTML=data[i].name;
+              nameArray.push(data[i].name);
+
+			}else if (j==1) {
+              th.innerHTML=data[i].chinese;
+              chinaArray.push(data[i].chinese);
+
+			}else if (j==2) {
+              th.innerHTML=data[i].math; 
+              mathArray.push(data[i].math);
+			}else if (j==3) {
+              th.innerHTML=data[i].english;
+              englishArray.push(data[i].english);
+
+			}else if (j==4) {
+              th.innerHTML=data[i].total;
+              totalArray.push(data[i].total); 
+			};
+			tr.appendChild(th);		
+		};
+		table.appendChild(tr);
+	};
+
+	 allArray=[chinaArray,mathArray,englishArray,totalArray];
+	  // console.log(allArray);
+}
+
+function sortArt(a,b){
+  return b-a;
+}
+window.onload=function(){
+	init(datas);
+	for (var i = 0; i < upBtns.length; i++) {
+		if (i==0) {
+		  upBtns[0].onclick=calate;
+		}else if (i==1) {
+			upBtns[1].onclick=calate1;
+		}else if (i==2) {
+			upBtns[2].onclick=calate2;
+		}else if (i==3) {
+			upBtns[3].onclick=calate3;
+		}else if (i==4) {
+			upBtns[4].onclick=calate4;
+		};
+	};
+}
+function calate(){
+	
+	sort1("chinese");
+	init(datas);
+}
+function calate1(){
+	table.innerHTML=''
+	sort1("math");
+	init(datas);
+}
+function calate2(){
+	calateAll(2);
+}
+function calate3(){
+	calateAll(3);
+}
+function calate4(){
+	calateAll(4);
+}
+  function rightoutclick(){
+var trs=document.getElementsByTagName('tr');
+if (trs.length<=1)  return;
+console.log(table,trs[trs.length-1]);
+    
+   table.removeChild(trs[trs.length-1]);
+
+    }
+    var preA=[];
+    var newA=[];
+    var newData=[];
+// function calateAll(i){
+// 	newA=[];
+// 	preA=[];
+// 	newData=[];
+// 	   for (var k = 0; k < allArray[i].length; k++) {
+// 	   	    preA.push(allArray[i][k]);
+// 	   	    newA.push(allArray[i][k]);
+// 	   };
+			
+// 			preA.sort(sortArt);
+			
+			
+		
+// 			for (var j = 0; j < newA.length; j++) {
+// 				for (var e = 0; e < j; e++) {
+                       
+// 				};
+// 				var list=newA.indexOf(preA[j]);
+// 				newData.push(datas[list]);
+// 				rightoutclick();
+// 			};
+//                console.log(newData);
+// 			init(newData);
+
+
+// 		}
+
+		  function sort1(val) {
+        var byScore = function (a, b) {
+            return a[val] - b[val];
+        };
+        return datas.sort(byScore);
+    }
+    
+</script>
